@@ -1,0 +1,42 @@
+{
+  "folders": [
+    {
+      "path": "packages/common-components"
+    },
+    {
+      "path": "packages/common-styles"
+    },
+    {
+      "path": "packages/prototype-a"
+    },
+    {
+      "path": "packages/prototype-b"
+    },
+  ],
+  "settings": {
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/.pnp.*": true,
+      "**/dist": true,
+      "**/node_modules": true,
+      "tsconfig.tsbuildinfo": true
+    },
+    "jest.jestCommandLine": "yarn test",
+    "jest.autoRun": {
+      "watch": false,
+      "onStartup": ["all-tests"],
+      "onSave": "test-file"
+    },
+    "eslint.nodePath": "../../.yarn/sdks",
+    "typescript.tsdk": "../../.yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "prettier.prettierPath": "../../.yarn/sdks/prettier/index.js"
+  },
+  "extensions": {
+    "recommendations": [
+      "arcanis.vscode-zipfs",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}
