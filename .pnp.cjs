@@ -62,6 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@babel/runtime", "npm:7.17.8"],
             ["@emotion/eslint-plugin", "virtual:cfd16f4b1de1aa3f95b76b0db53414ec9a5d1864925662f4129dca3b2a4c16bafeccf8e6ba8c3cb24d498d27ac7447c3a23eec939d34aae85affaf2aedb3e0d5#npm:11.7.0"],
+            ["@playwright/test", "npm:1.22.2"],
             ["@types/core-js", "npm:2.5.5"],
             ["@types/node", "npm:17.0.8"],
             ["@types/react", "npm:17.0.38"],
@@ -4008,6 +4009,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@npmcli/move-file", "npm:1.1.2"],
             ["mkdirp", "npm:1.0.4"],
             ["rimraf", "npm:3.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@playwright/test", [
+        ["npm:1.22.2", {
+          "packageLocation": "./.yarn/cache/@playwright-test-npm-1.22.2-fa49b9813b-55392a97d9.zip/node_modules/@playwright/test/",
+          "packageDependencies": [
+            ["@playwright/test", "npm:1.22.2"],
+            ["@types/node", "npm:17.0.8"],
+            ["playwright-core", "npm:1.22.2"]
           ],
           "linkType": "HARD",
         }]
@@ -17276,6 +17288,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["monorepo-template", "workspace:."],
             ["@babel/runtime", "npm:7.17.8"],
             ["@emotion/eslint-plugin", "virtual:cfd16f4b1de1aa3f95b76b0db53414ec9a5d1864925662f4129dca3b2a4c16bafeccf8e6ba8c3cb24d498d27ac7447c3a23eec939d34aae85affaf2aedb3e0d5#npm:11.7.0"],
+            ["@playwright/test", "npm:1.22.2"],
             ["@types/core-js", "npm:2.5.5"],
             ["@types/node", "npm:17.0.8"],
             ["@types/react", "npm:17.0.38"],
@@ -18468,6 +18481,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["pkg-up", "npm:3.1.0"],
             ["find-up", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["playwright-core", [
+        ["npm:1.22.2", {
+          "packageLocation": "./.yarn/unplugged/playwright-core-npm-1.22.2-ac980e0dc5/node_modules/playwright-core/",
+          "packageDependencies": [
+            ["playwright-core", "npm:1.22.2"]
           ],
           "linkType": "HARD",
         }]
