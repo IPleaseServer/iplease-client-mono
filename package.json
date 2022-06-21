@@ -13,10 +13,13 @@
     "prototype-a": "yarn workspace prototype-a",
     "prototype-b": "yarn workspace prototype-b",
     "postinstall": "husky install",
-    "test:all": "yarn workspaces foreach --parallel --include @common/components --include @common/utils run test"
+    "test:all": "yarn workspaces foreach --parallel --include @common/components --include @common/utils run test",
+    "e2e:headless": "yarn playwright test",
+    "e2e:headed": "yarn playwright test --headed"
   },
   "devDependencies": {
     "@emotion/eslint-plugin": "^11.7.0",
+    "@playwright/test": "^1.22.2",
     "@types/node": "^17.0.8",
     "@types/react": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.9.1",

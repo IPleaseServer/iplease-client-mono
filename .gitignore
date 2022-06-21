@@ -25,3 +25,8 @@ tsconfig.tsbuildinfo
 
 # msw Service Worker
 mockServiceWorker.js
+/test-results/
+
+# playwright
+/playwright-report/
+/playwright/.cache/

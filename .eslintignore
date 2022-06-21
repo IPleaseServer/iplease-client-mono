@@ -6,3 +6,7 @@ node_modules
 .pnp.loager.mjs
 !.storybook
 mockServiceWorker.js
+
+## playwright
+e2e/
+playwright.config.ts
