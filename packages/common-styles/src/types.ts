@@ -1,17 +1,8 @@
+export type HexaString = `#${string}`;
+export type RemString = `${number}rem`;
+
 export interface ITheme {
   palette: {
-    gray: {
-      black: string;
-      gray0: string;
-      gray1: string;
-      gray2: string;
-      gray3: string;
-      gray4: string;
-      gray5: string;
-      gray6: string;
-      gray7: string;
-      white: string;
-    };
     fontWeight: {
       thin: number;
       extraLight: number;
@@ -23,10 +14,18 @@ export interface ITheme {
       extraBold: number;
       black: number;
     };
-    hue: {
-      mint: string;
-      red: string;
-      gray: string;
+    borderRadius: RemString;
+    fontSize: {
+      extraSmall: RemString;
+      small: RemString;
+      medium: RemString;
+      large: RemString;
+      extraLarge: RemString;
     };
   };
+}
+
+export interface IGray {
+  gray100: HexaString;
+  gray200: HexaString;
 }
