@@ -1,22 +1,19 @@
-const black = '#000000';
+import { HexaString, IGray } from './types';
 
-const white = '#ffffff';
+const black: HexaString = '#333333';
 
-const mint = {
-  900: '#0f4342',
-  800: '#145c5a',
-  700: '#0b7777',
-  600: '#0d9897',
-  500: '#11b4b2',
-  400: '#31c2bf',
-  300: '#42d4d2',
-  200: '#83e7e6',
-  100: '#d6f7f6',
-  50: '#f2f9f9',
+const white: HexaString = '#ffffff';
+
+const pink: HexaString = '#f21362';
+
+const gray: IGray = {
+  gray100: '#c4c4c4',
+  gray200: '#eaeaea',
 };
 
 export default {
   black,
   white,
-  mint,
+  pink,
+  gray,
 };
