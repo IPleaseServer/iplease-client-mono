@@ -34,4 +34,5 @@ export interface ITheme {
 export interface IGray {
   gray100: HexaString;
   gray200: HexaString;
+  gray300: HexaString;
 }
