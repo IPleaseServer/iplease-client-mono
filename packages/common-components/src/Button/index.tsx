@@ -78,9 +78,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             padding: 0.45rem 0.625rem;
           `;
         case 'big':
-          return css``;
+          return css`
+            width: 100%;
+            padding: 15px 0;
+            font-size: ${theme.palette.fontSize.medium};
+            font-weight: ${theme.palette.fontWeight.extraBold};
+          `;
         default:
-          return css``;
+          return css`
+            font-size: ${theme.palette.fontSize.extraSmall};
+            font-weight: ${theme.palette.fontWeight.extraBold};
+            padding: 0.45rem 0.625rem;
+          `;
       }
     }, [size, theme]);
 
