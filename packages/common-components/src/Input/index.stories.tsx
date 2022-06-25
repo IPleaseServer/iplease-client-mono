@@ -23,4 +23,19 @@ export default {
 
 export const Basic: Story<InputProps> = args => <Input {...args} />;
 
-export const Colors = () => <Input />;
+export const Varient = () => (
+  <>
+    <Input
+      css={css`
+        margin-bottom: 10px;
+      `}
+    />
+    <Input
+      css={css`
+        margin-bottom: 10px;
+      `}
+      error
+    />
+    <Input placeholder="Placeholder" />
+  </>
+);
