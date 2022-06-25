@@ -7,16 +7,16 @@ import {
 
 import { css, useTheme } from '@emotion/react';
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   type?: 'button' | 'reset' | 'submit';
-  variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'danger' | 'default';
+  color?: 'primary' | 'negative' | 'default';
+  size?: 'small' | 'big';
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   text?: string;
   testId?: string;
-};
+}
 
 const buttonStyle = css`
   color: inherit;
@@ -34,8 +34,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       type = 'button',
-      variant = 'contained',
       color = 'primary',
+      size = 'small',
       onClick,
       text,
       disabled = false,
@@ -49,48 +49,49 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const colors = useMemo(
       () => ({
-        primary: theme.palette.hue.mint,
-        danger: theme.palette.hue.red,
+        primary: theme.palette.hue.pink,
+        negative: theme.palette.hue.black,
         default: theme.palette.hue.gray,
       }),
       [theme]
     );
 
     const baseStyle = css`
-      border-radius: 4px;
-      letter-spacing: -0.4px;
-      transition: 200ms opacity;
-      &:hover {
-        opacity: 0.8;
-      }
-      &:active {
-        opacity: 0.6;
-      }
+      border-radius: ${theme.palette.borderRadius};
     `;
 
-    const containedStyle = useMemo(
+    const colorStyle = useMemo(
       () => css`
-        color: ${theme.palette.gray.white};
         background-color: ${colors[color]};
+        color: ${theme.palette.hue.white};
+        filter: drop-shadow(0 0.25rem 1rem ${`${colors[color]}19`});
       `,
-      [theme, colors, color]
+      [color, colors, theme]
     );
 
-    const invertedStyle = useMemo(
-      () => css`
-        color: ${colors[color]};
-        border: ${variant === 'text' ? 0 : 1}px solid currentColor;
-        background-color: ${theme.palette.gray.white};
-        &:disabled {
-          color: ${theme.palette.gray.gray5};
-        }
-      `,
-      [theme, colors, color, variant]
-    );
-
-    const invertedPadding = css`
-      padding: 7px 9px;
-    `;
+    const sizeStyle = useMemo(() => {
+      switch (size) {
+        case 'small':
+          return css`
+            font-size: ${theme.palette.fontSize.extraSmall};
+            font-weight: ${theme.palette.fontWeight.extraBold};
+            padding: 0.45rem 0.625rem;
+          `;
+        case 'big':
+          return css`
+            width: 100%;
+            padding: 15px 0;
+            font-size: ${theme.palette.fontSize.medium};
+            font-weight: ${theme.palette.fontWeight.extraBold};
+          `;
+        default:
+          return css`
+            font-size: ${theme.palette.fontSize.extraSmall};
+            font-weight: ${theme.palette.fontWeight.extraBold};
+            padding: 0.45rem 0.625rem;
+          `;
+      }
+    }, [size, theme]);
 
     return (
       <button
@@ -100,12 +101,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={className}
         onClick={onClick}
         disabled={disabled}
-        css={[
-          buttonStyle,
-          baseStyle,
-          variant === 'contained' ? containedStyle : invertedStyle,
-          variant === 'outlined' && invertedPadding,
-        ]}
+        css={[buttonStyle, baseStyle, colorStyle, sizeStyle]}
         data-testid={testId}
         {...props}
       >

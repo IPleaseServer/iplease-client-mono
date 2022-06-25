@@ -1,3 +1,4 @@
+import colors from './colors';
 import { ITheme } from './types';
 
 const theme: ITheme = {
@@ -20,6 +21,12 @@ const theme: ITheme = {
       medium: '1.125rem',
       large: '1.25rem',
       extraLarge: '1.5rem',
+    },
+    hue: {
+      pink: colors.pink,
+      white: colors.white,
+      black: colors.black,
+      gray: colors.gray.gray100,
     },
   },
 };

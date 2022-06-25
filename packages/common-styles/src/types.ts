@@ -22,6 +22,12 @@ export interface ITheme {
       large: RemString;
       extraLarge: RemString;
     };
+    hue: {
+      pink: HexaString;
+      white: HexaString;
+      black: HexaString;
+      gray: HexaString;
+    };
   };
 }
 
