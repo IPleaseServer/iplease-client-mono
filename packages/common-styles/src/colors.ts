@@ -9,6 +9,7 @@ const pink: HexaString = '#f21362';
 const gray: IGray = {
   gray100: '#c4c4c4',
   gray200: '#eaeaea',
+  gray300: '#757575',
 };
 
 export default {
