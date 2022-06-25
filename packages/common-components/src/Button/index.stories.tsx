@@ -26,18 +26,10 @@ Basic.args = {
   text: '버튼',
 };
 
-export const Variant = () => (
-  <>
-    <Button text="꽉찬" />
-    <Button variant="outlined" text="테두리" />
-    <Button variant="text" text="글씨만" />
-  </>
-);
-
 export const Colors = () => (
   <>
     <Button color="primary" text="우선" />
     <Button color="default" text="기본" />
-    <Button color="danger" text="위험" />
+    <Button color="negative" text="부정" />
   </>
 );
