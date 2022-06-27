@@ -30,21 +30,21 @@ describe('validations utils', () => {
   });
 
   it('isAlphabet, 주어진 string이 영문만 포함되어 있는지 검사할 수 있다.', () => {
-    expect(isAlphabet('woowahan')).toEqual(true);
+    expect(isAlphabet('ABC')).toEqual(true);
     expect(isAlphabet('ABa')).toEqual(true);
     expect(isAlphabet('A+')).toEqual(false);
     expect(isAlphabet('가나다')).toEqual(false);
   });
 
   it('isAlphaNumeric, 주어진 string이 영문이나 숫자만 포함되어 있는지 검사할 수 있다.', () => {
-    expect(isAlphaNumeric('woowahan')).toEqual(true);
+    expect(isAlphaNumeric('ABC')).toEqual(true);
     expect(isAlphaNumeric('A0')).toEqual(true);
     expect(isAlphaNumeric('A-B')).toEqual(false);
     expect(isAlphaNumeric('가나다1')).toEqual(false);
   });
 
   it('isKorean, 주어진 string이 한글만 포함되어 있는지 검사할 수 있다.', () => {
-    expect(isKorean('우아한형제들')).toEqual(true);
+    expect(isKorean('가나다')).toEqual(true);
     expect(isKorean('010')).toEqual(false);
     expect(isKorean('A')).toEqual(false);
     expect(isKorean('가나다1')).toEqual(false);

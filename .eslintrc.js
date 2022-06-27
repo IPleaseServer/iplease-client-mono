@@ -147,36 +147,6 @@ module.exports = {
         },
       },
     },
-    {
-      files: [
-        'packages/prototype-a/**/*.ts?(x)',
-        'packages/prototype-a/**/*.js?(x)',
-      ],
-      settings: {
-        'import/resolver': {
-          typescript: {
-            project: path.resolve(
-              `${__dirname}/packages/prototype-a/tsconfig.json`
-            ),
-          },
-        },
-      },
-    },
-    {
-      files: [
-        'packages/prototype-b/**/*.ts?(x)',
-        'packages/prototype-b/**/*.js?(x)',
-      ],
-      settings: {
-        'import/resolver': {
-          typescript: {
-            project: path.resolve(
-              `${__dirname}/packages/prototype-b/tsconfig.json`
-            ),
-          },
-        },
-      },
-    },
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx', 'spec.js'],

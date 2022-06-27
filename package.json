@@ -10,8 +10,6 @@
     "common-components": "yarn workspace @common/components",
     "common-styles": "yarn workspace @common/styles",
     "common-utils": "yarn workspace @common/utils",
-    "prototype-a": "yarn workspace prototype-a",
-    "prototype-b": "yarn workspace prototype-b",
     "postinstall": "husky install",
     "test:all": "yarn workspaces foreach --parallel --include @common/components --include @common/utils run test",
     "e2e:headless": "yarn playwright test",
