@@ -34,7 +34,6 @@ export const Varient = () => (
       css={css`
         margin-bottom: 10px;
       `}
-      error
     />
     <Input placeholder="Placeholder" />
   </>

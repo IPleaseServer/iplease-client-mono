@@ -13,8 +13,6 @@ import cuid from 'cuid';
 
 import { colors } from '@common/styles';
 
-import { useInputGroup } from '../InputGroupContext';
-
 export interface InputProps {
   className?: string;
   type?: 'text' | 'number' | 'file' | 'password' | 'hidden';
@@ -25,7 +23,6 @@ export interface InputProps {
   value?: string | number;
   defaultValue?: string | number;
   disabled?: boolean;
-  error?: boolean;
   min?: string | number;
   max?: string | number;
   step?: number;
@@ -47,8 +44,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       postfix = '',
       type = 'text',
       disabled,
-      error = false,
       onChange,
+      onFocus,
+      onBlur,
       testId,
       align = 'left',
       ...inputProps
@@ -56,13 +54,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [id] = useState<string>(cuid());
+    const [isActive, setIsActive] = useState<boolean>(false);
     const theme = useTheme();
-
-    const inputGroup = useInputGroup();
-    const inputDisabled = useMemo(
-      () => inputGroup?.disabled ?? disabled,
-      [inputGroup, disabled]
-    );
 
     const handleChange = useMemo(
       () => (event: ChangeEvent<HTMLInputElement>) => {
@@ -78,23 +71,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         width: 100%;
         display: ${type === 'hidden' ? 'none' : 'inline-flex'};
         position: relative;
-        border: ${inputGroup
-          ? 'none'
-          : `2px solid ${error ? colors.pink : colors.gray.gray200}`};
+        border: 2px solid ${isActive ? colors.pink : colors.gray.gray200};
+        ${isActive &&
+        `
+          filter: drop-shadow(0 0.25rem 1rem ${`${colors.pink}19`});
+        `}
         border-radius: ${theme.palette.borderRadius};
-        padding: 12px 17px;
-        font-size: ${theme.palette.fontSize.medium};
-        font-weight: ${theme.palette.fontWeight.medium};
-        line-height: 18px;
+        padding: 0.895rem 1.125rem;
+        font-size: ${theme.palette.fontSize.small};
+        font-family: Pretendard;
         transition: 200ms border;
-        background-color: ${theme.palette.hue.white};
         label {
-          ${type === 'file' ? 'flex-shrink: 0;' : 'flex-grow: 1;'}
-          ${inputDisabled && `color: ${colors.gray.gray200};`}
-          color: ${theme.palette.hue.pink};
+          flex-grow: 1;
         }
         input {
-          ${type === 'file' && 'display: none;'}
           width: 100%;
           outline: none;
           border: none;
@@ -102,8 +92,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           text-align: ${align};
           background-color: transparent;
           color: ${theme.palette.hue.black};
+          font-size: ${theme.palette.fontSize.small};
+          font-weight: ${theme.palette.fontWeight.medium};
           &::placeholder {
             color: ${colors.gray.gray200};
+            font-weight: ${theme.palette.fontWeight.semiBold};
             transition: 200ms color;
           }
           &::-webkit-outer-spin-button,
@@ -122,7 +115,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         > .prefix,
         > .postfix {
           color: ${colors.gray.gray300};
-          font-weight: ${theme.palette.fontWeight.semiBold};
+          font-weight: ${theme.palette.fontWeight.medium};
           pointer-events: none;
           white-space: nowrap;
           &.postfix {
@@ -133,7 +126,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           }
         }
       `,
-      [inputGroup, type, theme, inputDisabled, align, error]
+      [type, theme, align, isActive]
     );
 
     return (
@@ -148,8 +141,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             id={id}
             ref={ref}
             type={type}
-            disabled={inputDisabled}
+            disabled={disabled}
             onChange={handleChange}
+            onFocus={e => {
+              setIsActive(true);
+              onFocus?.(e);
+            }}
+            onBlur={e => {
+              setIsActive(false);
+              onBlur?.(e);
+            }}
             {...inputProps}
           />
         </label>
