@@ -11615,6 +11615,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["emotion-reset", [
+        ["npm:3.0.1", {
+          "packageLocation": "./.yarn/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",
+          "packageDependencies": [
+            ["emotion-reset", "npm:3.0.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.0.1", {
+          "packageLocation": "./.yarn/__virtual__/emotion-reset-virtual-f68894dd3f/0/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",
+          "packageDependencies": [
+            ["emotion-reset", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.0.1"],
+            ["@emotion/react", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:11.7.1"],
+            ["@types/emotion__react", null]
+          ],
+          "packagePeers": [
+            "@emotion/react",
+            "@types/emotion__react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["emotion-theming", [
         ["npm:10.3.0", {
           "packageLocation": "./.yarn/cache/emotion-theming-npm-10.3.0-d61ea01621-2b0366afad.zip/node_modules/emotion-theming/",
@@ -14790,6 +14812,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-transition-group", "npm:4.4.4"],
             ["babel-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:8.2.3"],
             ["css-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:6.7.1"],
+            ["emotion-reset", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.0.1"],
             ["html-webpack-plugin", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:5.5.0"],
             ["react", "npm:18.2.0"],
             ["react-dom", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:18.2.0"],
