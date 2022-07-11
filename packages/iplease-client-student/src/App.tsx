@@ -4,6 +4,7 @@ import emotionReset from 'emotion-reset';
 import { theme } from '@common/styles';
 
 import '@common/styles/src/emotion.d';
+import AppRouter from './Router';
 
 const globalStyles = css`
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.4/dist/web/static/pretendard-dynamic-subset.css');
@@ -24,6 +25,7 @@ const globalStyles = css`
 const App = () => (
   <ThemeProvider theme={theme}>
     <Global styles={globalStyles} />
+    <AppRouter />
   </ThemeProvider>
 );
 
