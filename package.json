@@ -10,6 +10,7 @@
     "common-components": "yarn workspace @common/components",
     "common-styles": "yarn workspace @common/styles",
     "common-utils": "yarn workspace @common/utils",
+    "iplease-client-student": "yarn workspace iplease-client-student",
     "postinstall": "husky install",
     "test:all": "yarn workspaces foreach --parallel --include @common/components --include @common/utils run test",
     "e2e:headless": "yarn playwright test",
