@@ -1,18 +1,20 @@
-const SignInPage: React.FC = () => (
-  <div>
-    <h1>Login</h1>
-    <form>
-      <label>
-        Email:
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password:
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-);
+import { css } from '@emotion/react';
+
+import { SignInForm } from 'components/SignInForm';
+
+const SignInPage: React.FC = () => {
+  const style = css`
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  `;
+
+  return (
+    <div css={style}>
+      <SignInForm />
+    </div>
+  );
+};
 
 export default SignInPage;
