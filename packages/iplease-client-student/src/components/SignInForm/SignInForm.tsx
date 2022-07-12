@@ -12,6 +12,8 @@ import { colors } from '@common/styles';
 import Logo from 'assets/Logo';
 
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
+
+// GSM 학생 이메일 정규 표현식입니다.
 const GSM_EMAIL_PREFIX_REGEX = /s\d{5}/g;
 
 const SignInForm: React.FC = () => {
