@@ -5,7 +5,11 @@ import { render, RenderOptions } from '@testing-library/react';
 
 import { theme } from '@common/styles';
 
-const AllTheProviders: FC = ({ children }) => (
+interface AllTheProvidersProps {
+  children?: React.ReactNode;
+}
+
+const AllTheProviders: FC<AllTheProvidersProps> = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
