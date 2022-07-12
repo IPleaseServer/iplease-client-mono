@@ -3525,6 +3525,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@hookform/error-message", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/@hookform-error-message-npm-2.0.0-2dac26777d-84aa3a6cb5.zip/node_modules/@hookform/error-message/",
+          "packageDependencies": [
+            ["@hookform/error-message", "npm:2.0.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.0.0", {
+          "packageLocation": "./.yarn/__virtual__/@hookform-error-message-virtual-f8c5e1bc94/0/cache/@hookform-error-message-npm-2.0.0-2dac26777d-84aa3a6cb5.zip/node_modules/@hookform/error-message/",
+          "packageDependencies": [
+            ["@hookform/error-message", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.0.0"],
+            ["@types/react", "npm:18.0.15"],
+            ["@types/react-dom", "npm:18.0.6"],
+            ["@types/react-hook-form", null],
+            ["react", "npm:18.2.0"],
+            ["react-dom", "virtual:40d7f9ffaa138e49294e502d18f847b2aaeb51a6665ba0a769fdec13cf9a762aee6a9a5a420d2a584cce90475436035f01f6a8c3616d22bb5d11e1a9df569a89#npm:18.2.0"],
+            ["react-hook-form", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:7.33.1"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react-hook-form",
+            "@types/react",
+            "react-dom",
+            "react-hook-form",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@hookform/resolvers", [
         ["npm:2.9.5", {
           "packageLocation": "./.yarn/cache/@hookform-resolvers-npm-2.9.5-5fa5f2f734-e03a07bc24.zip/node_modules/@hookform/resolvers/",
@@ -14797,6 +14827,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@common/components", "workspace:packages/common-components"],
             ["@common/styles", "workspace:packages/common-styles"],
             ["@emotion/react", "virtual:40d7f9ffaa138e49294e502d18f847b2aaeb51a6665ba0a769fdec13cf9a762aee6a9a5a420d2a584cce90475436035f01f6a8c3616d22bb5d11e1a9df569a89#npm:11.7.1"],
+            ["@hookform/error-message", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.0.0"],
             ["@hookform/resolvers", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.9.5"],
             ["@types/react", "npm:18.0.15"],
             ["@types/react-dom", "npm:18.0.6"],
