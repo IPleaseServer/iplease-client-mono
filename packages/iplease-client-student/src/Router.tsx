@@ -1,11 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+
+import SignInPage from './pages/auth/signin';
 
 const AppRouter: React.FC = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<div>router test</div>} />
-    </Routes>
-  </BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Link to="/auth/signin">로그인 페이지</Link>} />
+    <Route path="/auth/signin" element={<SignInPage />} />
+  </Routes>
 );
 
 export default AppRouter;
