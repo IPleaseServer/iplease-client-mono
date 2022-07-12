@@ -14811,6 +14811,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router-dom", "virtual:391789c518a8c0642d0c6925d68078434837c712e723c1001808b9170e17203e9d138dc60d05d4b7cf76fe1c566019d24203e14deb717c666922f51fa7c1f079#npm:6.2.1"],
             ["regenerator-runtime", "npm:0.13.9"],
             ["style-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.3.1"],
+            ["tsconfig-paths-webpack-plugin", "npm:3.5.2"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"],
             ["typescript-styled-plugin", "npm:0.18.2"],
             ["webpack", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:5.73.0"],
@@ -22218,6 +22219,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json5", "npm:1.0.1"],
             ["minimist", "npm:1.2.5"],
             ["strip-bom", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["tsconfig-paths-webpack-plugin", [
+        ["npm:3.5.2", {
+          "packageLocation": "./.yarn/cache/tsconfig-paths-webpack-plugin-npm-3.5.2-7d7e8a5739-e7872f45b1.zip/node_modules/tsconfig-paths-webpack-plugin/",
+          "packageDependencies": [
+            ["tsconfig-paths-webpack-plugin", "npm:3.5.2"],
+            ["chalk", "npm:4.1.2"],
+            ["enhanced-resolve", "npm:5.10.0"],
+            ["tsconfig-paths", "npm:3.12.0"]
           ],
           "linkType": "HARD",
         }]
