@@ -8,7 +8,15 @@
         "name": "typescript-styled-plugin",
         "tags": ["styled", "css"]
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "shared/*": ["./src/shared/*"],
+      "assets/*": ["./src/assets/*"],
+      "types/*": ["./src/types/*"]
+    }
   },
   "include": ["../common-styles/src/emotion.d.ts", "src/**/*", "@types/*"]
 }

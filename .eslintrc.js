@@ -147,6 +147,21 @@ module.exports = {
         },
       },
     },
+    {
+      files: [
+        'packages/iplease-client-student/**/*.ts?(x)',
+        'packages/iplease-client-student/**/*.js?(x)',
+      ],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: path.resolve(
+              `${__dirname}/packages/iplease-client-student/tsconfig.json`
+            ),
+          },
+        },
+      },
+    },
   ],
   settings: {
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx', 'spec.js'],
