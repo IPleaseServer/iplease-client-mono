@@ -14,7 +14,7 @@ import Logo from 'assets/Logo';
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 
 // GSM 학생 이메일 정규 표현식입니다.
-const GSM_EMAIL_PREFIX_REGEX = /s\d{5}/g;
+const GSM_STUDENT_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
 const SignInForm: React.FC = () => {
   const theme = useTheme();
@@ -31,7 +31,7 @@ const SignInForm: React.FC = () => {
     email: z
       .string()
       .nonempty({ message: '빈값이 들어갈 수 없어요' })
-      .regex(GSM_EMAIL_PREFIX_REGEX, {
+      .regex(GSM_STUDENT_EMAIL_PREFIX_REGEX, {
         message: '학교 이메일 형식에 맞는지 확인해주세요',
       }),
     password: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
