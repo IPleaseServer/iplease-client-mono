@@ -3525,6 +3525,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@hookform/resolvers", [
+        ["npm:2.9.5", {
+          "packageLocation": "./.yarn/cache/@hookform-resolvers-npm-2.9.5-5fa5f2f734-e03a07bc24.zip/node_modules/@hookform/resolvers/",
+          "packageDependencies": [
+            ["@hookform/resolvers", "npm:2.9.5"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.9.5", {
+          "packageLocation": "./.yarn/__virtual__/@hookform-resolvers-virtual-b7538bad87/0/cache/@hookform-resolvers-npm-2.9.5-5fa5f2f734-e03a07bc24.zip/node_modules/@hookform/resolvers/",
+          "packageDependencies": [
+            ["@hookform/resolvers", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.9.5"],
+            ["@types/react-hook-form", null],
+            ["react-hook-form", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:7.33.1"]
+          ],
+          "packagePeers": [
+            "@types/react-hook-form",
+            "react-hook-form"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@humanwhocodes/config-array", [
         ["npm:0.9.2", {
           "packageLocation": "./.yarn/cache/@humanwhocodes-config-array-npm-0.9.2-fda1e17bbb-28a9e2974c.zip/node_modules/@humanwhocodes/config-array/",
@@ -14775,6 +14797,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@common/components", "workspace:packages/common-components"],
             ["@common/styles", "workspace:packages/common-styles"],
             ["@emotion/react", "virtual:40d7f9ffaa138e49294e502d18f847b2aaeb51a6665ba0a769fdec13cf9a762aee6a9a5a420d2a584cce90475436035f01f6a8c3616d22bb5d11e1a9df569a89#npm:11.7.1"],
+            ["@hookform/resolvers", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:2.9.5"],
             ["@types/react", "npm:18.0.15"],
             ["@types/react-dom", "npm:18.0.6"],
             ["@types/react-transition-group", "npm:4.4.4"],
@@ -14784,6 +14807,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["html-webpack-plugin", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:5.5.0"],
             ["react", "npm:18.2.0"],
             ["react-dom", "virtual:40d7f9ffaa138e49294e502d18f847b2aaeb51a6665ba0a769fdec13cf9a762aee6a9a5a420d2a584cce90475436035f01f6a8c3616d22bb5d11e1a9df569a89#npm:18.2.0"],
+            ["react-hook-form", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:7.33.1"],
             ["react-router-dom", "virtual:391789c518a8c0642d0c6925d68078434837c712e723c1001808b9170e17203e9d138dc60d05d4b7cf76fe1c566019d24203e14deb717c666922f51fa7c1f079#npm:6.2.1"],
             ["regenerator-runtime", "npm:0.13.9"],
             ["style-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.3.1"],
@@ -14791,7 +14815,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript-styled-plugin", "npm:0.18.2"],
             ["webpack", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:5.73.0"],
             ["webpack-cli", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:4.10.0"],
-            ["webpack-dev-server", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:4.9.3"]
+            ["webpack-dev-server", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:4.9.3"],
+            ["zod", "npm:3.17.3"]
           ],
           "linkType": "SOFT",
         }]
@@ -19540,6 +19565,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-hook-form", [
+        ["npm:7.33.1", {
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.33.1-f1c46322f4-ec8f938b5a.zip/node_modules/react-hook-form/",
+          "packageDependencies": [
+            ["react-hook-form", "npm:7.33.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:7.33.1", {
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-d98d53d183/0/cache/react-hook-form-npm-7.33.1-f1c46322f4-ec8f938b5a.zip/node_modules/react-hook-form/",
+          "packageDependencies": [
+            ["react-hook-form", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:7.33.1"],
+            ["@types/react", "npm:18.0.15"],
+            ["react", "npm:18.2.0"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-inspector", [
         ["npm:5.1.1", {
           "packageLocation": "./.yarn/cache/react-inspector-npm-5.1.1-20c125b3fd-ca9e4c1fed.zip/node_modules/react-inspector/",
@@ -23890,6 +23937,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/yocto-queue-npm-0.1.0-c6c9a7db29-f77b3d8d00.zip/node_modules/yocto-queue/",
           "packageDependencies": [
             ["yocto-queue", "npm:0.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["zod", [
+        ["npm:3.17.3", {
+          "packageLocation": "./.yarn/cache/zod-npm-3.17.3-2f3f0c3086-f74b5d8a30.zip/node_modules/zod/",
+          "packageDependencies": [
+            ["zod", "npm:3.17.3"]
           ],
           "linkType": "HARD",
         }]
