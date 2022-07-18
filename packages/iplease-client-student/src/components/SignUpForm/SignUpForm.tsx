@@ -10,7 +10,8 @@ import { Button, Input } from '@common/components';
 import { colors } from '@common/styles';
 
 import Logo from 'assets/Logo';
-import { EmailVerifyForm } from 'components/EmailVerifyForm';
+import { AuthCodeForm } from 'components/AuthCodeForm';
+import { EmailForm } from 'components/EmailForm';
 
 const GSM_STUDENT_EMAIL_POSTFIX_REGEX = /^[1-3][1-4][0-2][0-9]$/g;
 
@@ -58,7 +59,15 @@ const SignInForm: React.FC = () => {
       margin-bottom: 1.75rem;
     }
     .form-field {
-      form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4375rem;
+      .authorize-email-field {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .info-form {
         display: flex;
         flex-direction: column;
         gap: 0.4375rem;
@@ -74,15 +83,6 @@ const SignInForm: React.FC = () => {
           content: '⚠ ';
           padding-left: 1.2rem;
         }
-        .email-validate {
-          color: ${colors.pink};
-          font-family: Pretendard;
-          font-size: ${theme.palette.fontSize.extraSmall};
-          font-weight: ${theme.palette.fontWeight.regular};
-          text-decoration-line: underline;
-          margin-left: 1.2rem;
-          cursor: pointer;
-        }
       }
     }
   `;
@@ -93,8 +93,11 @@ const SignInForm: React.FC = () => {
         <Logo />
       </div>
       <div className="form-field">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <EmailVerifyForm />
+        <div className="authorize-email-field">
+          <EmailForm />
+          <AuthCodeForm />
+        </div>
+        <form className="info-form" onSubmit={handleSubmit(onSubmit)}>
           <Input {...register('name')} placeholder="이름" />
           <ErrorMessage errors={errors} name="name" as="p" />
           <Input {...register('studentNumber')} placeholder="학번" />
