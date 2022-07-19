@@ -9,7 +9,7 @@ import { z } from 'zod';
 import { Button, Input } from '@common/components';
 import { colors, theme } from '@common/styles';
 
-const GSM_EMAIL_PREFIX_REGEX = /^\d{6}$/g;
+const AUTH_CODE_REGEX = /^\d{6}$/g;
 
 const EmailVerifyForm: React.FC = () => {
   const [formData, setFormData] = useState<{
@@ -22,8 +22,8 @@ const EmailVerifyForm: React.FC = () => {
     authCode: z
       .string()
       .nonempty({ message: '빈값이 들어갈 수 없어요' })
-      .regex(GSM_EMAIL_PREFIX_REGEX, {
-        message: '학교 이메일 형식에 맞는지 확인해주세요',
+      .regex(AUTH_CODE_REGEX, {
+        message: '인증 코드 형식에 맞는지 확인해주세요',
       }),
   });
 
