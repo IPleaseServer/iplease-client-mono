@@ -15,6 +15,7 @@
       "hooks/*": ["./src/hooks/*"],
       "shared/*": ["./src/shared/*"],
       "assets/*": ["./src/assets/*"],
+      "libs/*": ["./src/libs/*"],
       "types/*": ["./src/types/*"]
     }
   },
