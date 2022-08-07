@@ -9,6 +9,8 @@ import { z } from 'zod';
 import { Input } from '@common/components';
 import { colors, theme } from '@common/styles';
 
+import axiosClient from 'libs/axios/axiosClient';
+
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 const GSM_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
@@ -37,7 +39,11 @@ const EmailVerifyForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
-    setFormData(data);
+    axiosClient
+      .post(`/account/auth/email/${data.email + GSM_EMAIL_POSTFIX}`)
+      .then(res => {
+        console.log(res);
+      });
   };
 
   const style = css`
