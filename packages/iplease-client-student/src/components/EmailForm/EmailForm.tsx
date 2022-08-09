@@ -9,7 +9,7 @@ import { z } from 'zod';
 import { Input } from '@common/components';
 import { colors, theme } from '@common/styles';
 
-import axiosClient from 'libs/axios/axiosClient';
+import axiosClient from 'utils/api/axios';
 
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 const GSM_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
