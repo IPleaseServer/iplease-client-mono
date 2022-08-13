@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { Input } from '@common/components';
@@ -44,6 +45,7 @@ const EmailVerifyForm: React.FC = () => {
       .post(authorizeUriController.authEmail(data.email) + GSM_EMAIL_POSTFIX)
       .then(res => {
         if (res.status === 200) {
+          toast.success('인증코드를 발송했습니다');
           setFormData({ email: data.email });
         }
       });
