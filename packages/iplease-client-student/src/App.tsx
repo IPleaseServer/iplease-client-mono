@@ -1,9 +1,10 @@
 import { css, Global, ThemeProvider } from '@emotion/react';
 import emotionReset from 'emotion-reset';
+import { Toaster } from 'react-hot-toast';
 
 import { theme } from '@common/styles';
-
 import '@common/styles/src/emotion.d';
+
 import AppRouter from './Router';
 
 const globalStyles = css`
@@ -26,6 +27,7 @@ const App = () => (
   <ThemeProvider theme={theme}>
     <Global styles={globalStyles} />
     <AppRouter />
+    <Toaster />
   </ThemeProvider>
 );
 
