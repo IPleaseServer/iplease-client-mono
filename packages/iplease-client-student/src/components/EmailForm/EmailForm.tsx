@@ -10,6 +10,7 @@ import { Input } from '@common/components';
 import { colors, theme } from '@common/styles';
 
 import axiosClient from 'utils/api/axios';
+import authorizeUriController from 'utils/api/uri/account/authorize';
 
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 const GSM_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
@@ -40,11 +41,16 @@ const EmailVerifyForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
     axiosClient
-      .post(`/account/auth/email/${data.email + GSM_EMAIL_POSTFIX}`)
+      .post(authorizeUriController.authEmail(data.email) + GSM_EMAIL_POSTFIX)
       .then(res => {
-        console.log(res);
+        if (res.status === 200) {
+          setFormData({ email: data.email });
+        }
       });
   };
+
+  const submitButtonTextHandler =
+    formData.email === '' ? '이메일 인증코드 발송' : '이메일 인증코드 재발송';
 
   const style = css`
     form {
@@ -81,7 +87,7 @@ const EmailVerifyForm: React.FC = () => {
           postfix={GSM_EMAIL_POSTFIX}
         />
         <ErrorMessage errors={errors} name="email" as="p" />
-        <button type="submit">이메일 인증코드 발송</button>
+        <button type="submit">{submitButtonTextHandler}</button>
       </form>
     </div>
   );
