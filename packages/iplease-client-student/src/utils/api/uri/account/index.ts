@@ -7,6 +7,9 @@ const accountApiUri = {
 
   // 가입
   register: () => `${prefix}/register/student`,
+
+  // 로그인
+  login: () => `${prefix}/login`,
 };
 
 export default accountApiUri;
