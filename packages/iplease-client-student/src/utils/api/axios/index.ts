@@ -1,6 +1,6 @@
 import axios, { AxiosInstance as AxiosClient } from 'axios';
 
-const BASE_URL = 'https://1bbf-115-23-68-158.jp.ngrok.io';
+const BASE_URL = 'https://644e-221-156-195-73.jp.ngrok.io';
 const URL_POSTFIX = '/api/v1';
 
 const axiosClient: AxiosClient = axios.create({
