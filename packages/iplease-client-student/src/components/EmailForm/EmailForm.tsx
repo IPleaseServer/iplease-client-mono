@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AxiosError } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
@@ -43,6 +44,11 @@ const EmailVerifyForm: React.FC = () => {
         if (res.status === 200) {
           toast.success('인증코드를 발송했습니다');
           setIsSended(true);
+        }
+      })
+      .catch((err: AxiosError<{ message: string }>) => {
+        if (err.response) {
+          toast.error(err.response.data.message);
         }
       });
   };
