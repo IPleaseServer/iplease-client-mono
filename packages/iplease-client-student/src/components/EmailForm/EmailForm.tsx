@@ -17,11 +17,7 @@ const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 const GSM_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
 const EmailVerifyForm: React.FC = () => {
-  const [formData, setFormData] = useState<{
-    email: string;
-  }>({
-    email: '',
-  });
+  const [isSended, setIsSended] = useState<boolean>(false);
 
   const schema = z.object({
     email: z
@@ -46,13 +42,14 @@ const EmailVerifyForm: React.FC = () => {
       .then(res => {
         if (res.status === 200) {
           toast.success('인증코드를 발송했습니다');
-          setFormData({ email: data.email });
+          setIsSended(true);
         }
       });
   };
 
-  const submitButtonTextHandler =
-    formData.email === '' ? '이메일 인증코드 발송' : '이메일 인증코드 재발송';
+  const submitButtonTextHandler = isSended
+    ? '이메일 인증코드 재발송'
+    : '이메일 인증코드 발송';
 
   const style = css`
     form {
