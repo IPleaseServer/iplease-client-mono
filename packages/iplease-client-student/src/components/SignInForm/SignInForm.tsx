@@ -1,15 +1,18 @@
-import { useState } from 'react';
-
 import { css, useTheme } from '@emotion/react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AxiosError, AxiosResponse } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
 import { colors } from '@common/styles';
+import { setValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
+import axiosClient from 'utils/api/axios';
+import accountApiUri from 'utils/api/uri/account';
 
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 
@@ -18,14 +21,6 @@ const GSM_STUDENT_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
 const SignInForm: React.FC = () => {
   const theme = useTheme();
-
-  const [formData, setFormData] = useState<{
-    email: string;
-    password: string;
-  }>({
-    email: '',
-    password: '',
-  });
 
   const schema = z.object({
     email: z
@@ -46,7 +41,29 @@ const SignInForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
-    setFormData(data);
+    axiosClient
+      .post(accountApiUri.login(), {
+        email: data.email + GSM_EMAIL_POSTFIX,
+        password: data.password,
+      })
+      .then(
+        (res: AxiosResponse<{ accessToken: string; refreshToken: string }>) => {
+          if (res.status === 200) {
+            setValue('accessToken', res.data.accessToken, true);
+            setValue('refreshToken', res.data.refreshToken, true);
+          }
+        }
+      )
+      .catch((err: AxiosError<{ detail: string }>) => {
+        if (!err.response) return;
+
+        if (err.response.status === 500) {
+          toast.error('서버 오류입니다. 잠시 후 다시 시도해주세요');
+        }
+        if (err.response.data.detail) {
+          toast.error(err.response.data.detail);
+        }
+      });
   };
 
   const style = css`
