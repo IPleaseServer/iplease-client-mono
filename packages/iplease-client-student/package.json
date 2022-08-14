@@ -9,6 +9,7 @@
     "@babel/runtime": "^7.16.7",
     "@common/components": "workspace:*",
     "@common/styles": "workspace:*",
+    "@common/utils": "workspace:*",
     "@emotion/react": "^11.7.1",
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.5",

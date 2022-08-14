@@ -1677,7 +1677,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@common/utils@workspace:packages/common-utils":
+"@common/utils@workspace:*, @common/utils@workspace:packages/common-utils":
   version: 0.0.0-use.local
   resolution: "@common/utils@workspace:packages/common-utils"
   dependencies:
@@ -10527,6 +10527,7 @@ __metadata:
     "@babel/runtime": ^7.16.7
     "@common/components": "workspace:*"
     "@common/styles": "workspace:*"
+    "@common/utils": "workspace:*"
     "@emotion/react": ^11.7.1
     "@hookform/error-message": ^2.0.0
     "@hookform/resolvers": ^2.9.5
