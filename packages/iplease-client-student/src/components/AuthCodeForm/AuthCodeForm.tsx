@@ -3,21 +3,21 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AxiosError, AxiosResponse } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
 import { colors, theme } from '@common/styles';
+import { setValue } from '@common/utils/storage/storage';
+
+import axiosClient from 'utils/api/axios';
+import accountApiUri from 'utils/api/uri/account';
 
 const AUTH_CODE_REGEX = /^\d{6}$/g;
 
 const EmailVerifyForm: React.FC = () => {
-  const [formData, setFormData] = useState<{
-    authCode: string;
-  }>({
-    authCode: '',
-  });
-
   const schema = z.object({
     authCode: z
       .string()
@@ -36,7 +36,24 @@ const EmailVerifyForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
-    setFormData(data);
+    axiosClient
+      .get(accountApiUri.authCode(data.authCode))
+      .then((res: AxiosResponse<{ token: string }>) => {
+        if (res.status === 200) {
+          toast.success('인증이 완료되었어요');
+          setValue<string>('emailToken', res.data.token);
+        }
+      })
+      .catch((err: AxiosError<{ message: string }>) => {
+        if (!err.response) return;
+
+        if (err.response.status === 500) {
+          toast.error('서버 오류입니다. 잠시 후 다시 시도해주세요');
+        }
+        if (err.response.data.message) {
+          toast.error(err.response.data.message);
+        }
+      });
   };
 
   const style = css`
