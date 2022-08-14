@@ -20,6 +20,11 @@ import accountApiUri from 'utils/api/uri/account';
 
 const GSM_STUDENT_EMAIL_POSTFIX_REGEX = /^[1-3][1-4][0-2][0-9]$/g;
 
+const GSM_DEPARTMENTS = {
+  소프트웨어개발: 'SOFTWARE_DEVELOP',
+  스마트IoT: 'SMART_IOT',
+};
+
 const SignInForm: React.FC = () => {
   const theme = useTheme();
 
@@ -105,6 +110,20 @@ const SignInForm: React.FC = () => {
           content: '⚠ ';
           padding-left: 1.2rem;
         }
+        select {
+          color: ${theme.palette.hue.black};
+          font-size: ${theme.palette.fontSize.small};
+          font-weight: ${theme.palette.fontWeight.medium};
+          border-radius: ${theme.palette.borderRadius};
+          border: 2px solid ${colors.gray.gray200};
+          padding: 0.895rem 0.8rem;
+          outline: ${colors.pink};
+          cursor: pointer;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          text-indent: 1px;
+          text-overflow: '';
+        }
       }
     }
   `;
@@ -130,7 +149,12 @@ const SignInForm: React.FC = () => {
             type="password"
           />
           <ErrorMessage errors={errors} name="password" as="p" />
-          <Input {...register('department')} placeholder="학과" />
+          <select {...register('department')}>
+            <option value={GSM_DEPARTMENTS.소프트웨어개발}>
+              소프트웨어 개발
+            </option>
+            <option value={GSM_DEPARTMENTS.스마트IoT}>스마트 IoT</option>
+          </select>
           <ErrorMessage errors={errors} name="department" as="p" />
           <Button type="submit" text="회원가입" size="big" />
         </form>
