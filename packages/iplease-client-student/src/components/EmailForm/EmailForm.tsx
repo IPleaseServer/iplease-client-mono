@@ -11,7 +11,7 @@ import { Input } from '@common/components';
 import { colors, theme } from '@common/styles';
 
 import axiosClient from 'utils/api/axios';
-import authorizeUriController from 'utils/api/uri/account/authorize';
+import accountApiUri from 'utils/api/uri/account';
 
 const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
 const GSM_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
@@ -42,7 +42,7 @@ const EmailVerifyForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
     axiosClient
-      .post(authorizeUriController.authEmail(data.email) + GSM_EMAIL_POSTFIX)
+      .post(accountApiUri.authEmail(data.email) + GSM_EMAIL_POSTFIX)
       .then(res => {
         if (res.status === 200) {
           toast.success('인증코드를 발송했습니다');
