@@ -1,11 +1,12 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import dayjs from 'dayjs';
 
 import { getValue, removeValue, setValue } from '@common/utils/storage/storage';
 
 import accountApiUri from '../uri/account';
 
-import axiosClient from '.';
+const BASE_URL = 'https://644e-221-156-195-73.jp.ngrok.io';
+const URL_POSTFIX = '/api/v1';
 
 const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
   const refreshToken = getValue<string>('refreshToken');
@@ -15,8 +16,8 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
   // 토큰이 만료되었고, refreshToken 이 저장되어 있을 때
   if (dayjs(expireAt).diff(dayjs()) < 0 && refreshToken) {
     // 토큰 갱신 서버통신
-    axiosClient
-      .post(accountApiUri.refresh(), {
+    axios
+      .post(BASE_URL + URL_POSTFIX + accountApiUri.refresh(), {
         refreshToken,
       })
       .then(
