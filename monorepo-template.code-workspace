@@ -5,6 +5,9 @@
     },
     {
       "path": "packages/common-styles"
+    },
+    {
+      "path": "packages/iplease-client-student"
     }
   ],
   "settings": {

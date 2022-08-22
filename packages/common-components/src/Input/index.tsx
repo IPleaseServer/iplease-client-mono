@@ -109,6 +109,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           }
           &[type='password'] {
             letter-spacing: 0.25rem;
+            &::placeholder {
+              letter-spacing: initial;
+            }
           }
           transition: 200ms color;
         }
