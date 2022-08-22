@@ -10,6 +10,7 @@ const accountApiUri = {
 
   // 로그인
   login: () => `${prefix}/login`,
+  refresh: () => `${prefix}/login/refresh`,
 };
 
 export default accountApiUri;
