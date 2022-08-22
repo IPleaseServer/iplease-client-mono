@@ -10993,6 +10993,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["dayjs", [
+        ["npm:1.11.5", {
+          "packageLocation": "./.yarn/cache/dayjs-npm-1.11.5-a825142dc5-e3bbaa7b48.zip/node_modules/dayjs/",
+          "packageDependencies": [
+            ["dayjs", "npm:1.11.5"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["debug", [
         ["npm:2.6.9", {
           "packageLocation": "./.yarn/cache/debug-npm-2.6.9-7d4cb597dc-d2f51589ca.zip/node_modules/debug/",
@@ -14879,6 +14888,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["axios", "npm:0.27.2"],
             ["babel-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:8.2.3"],
             ["css-loader", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:6.7.1"],
+            ["dayjs", "npm:1.11.5"],
             ["emotion-reset", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:3.0.1"],
             ["html-webpack-plugin", "virtual:ec5891ef0060a1e193625c8084a66e8b381da874f3dd898f1de99f8d808605208dba5fc031a733fb88350a95595f5defe8838ddc173f2b90d8445a0c61739132#npm:5.5.0"],
             ["react", "npm:18.2.0"],

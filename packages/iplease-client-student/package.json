@@ -14,6 +14,7 @@
     "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^2.9.5",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "emotion-reset": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
