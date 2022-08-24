@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 
-import { colors, theme } from '@common/styles';
-
 import Logo from 'assets/Logo';
+import { NavItem } from 'components/NavItem';
 
 const Header: React.FC = () => {
   const style = css`
@@ -22,13 +21,6 @@ const Header: React.FC = () => {
         align-items: center;
         gap: 2.5rem;
         justify-content: space-between;
-        li {
-          height: inherit;
-          display: grid;
-          place-items: center;
-          font-weight: ${theme.palette.fontWeight.bold};
-          color: ${colors.black};
-        }
       }
     }
   `;
@@ -38,8 +30,8 @@ const Header: React.FC = () => {
       <nav>
         <Logo size="small" />
         <ul>
-          <li>IP 할당 신청</li>
-          <li>내 정보</li>
+          <NavItem>IP 할당 신청</NavItem>
+          <NavItem>내 정보</NavItem>
         </ul>
       </nav>
     </header>
