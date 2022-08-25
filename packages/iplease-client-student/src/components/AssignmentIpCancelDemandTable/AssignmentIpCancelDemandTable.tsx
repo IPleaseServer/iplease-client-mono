@@ -3,8 +3,6 @@ import { css } from '@emotion/react';
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
 
-import { TableButton } from 'components/Common/TableButton';
-
 const AssignmentIpDemandTable = () => {
   const style = css`
     width: fit-content;
@@ -13,7 +11,6 @@ const AssignmentIpDemandTable = () => {
     box-shadow: 0px 6px 12px rgba(51, 51, 51, 0.08);
     table {
       text-align: left;
-      margin-bottom: 2.5rem;
       th {
         font-weight: ${theme.palette.fontWeight.bold};
         font-size: ${theme.palette.fontSize.small};
