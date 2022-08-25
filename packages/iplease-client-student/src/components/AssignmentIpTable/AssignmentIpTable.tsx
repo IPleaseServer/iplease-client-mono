@@ -32,7 +32,7 @@ const AssignmentIpTable = () => {
         }
       }
     }
-    margin-bottom: 2.1875rem;
+    margin-bottom: 3.125rem;
   `;
 
   return (
