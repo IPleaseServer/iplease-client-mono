@@ -18,6 +18,7 @@ const AssignmentIpTable = () => {
         font-weight: ${theme.palette.fontWeight.bold};
         font-size: ${theme.palette.fontSize.small};
         color: ${colors.black};
+        padding-bottom: 0.625rem;
       }
       tr {
         td {
