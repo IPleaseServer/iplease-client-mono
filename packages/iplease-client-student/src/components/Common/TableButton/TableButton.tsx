@@ -2,6 +2,8 @@ import { css } from '@emotion/react';
 
 import { colors, theme } from '@common/styles';
 
+import RightArrow from 'assets/RightArrow';
+
 const TableButton: React.FC = () => {
   const style = css`
     display: grid;
@@ -14,6 +16,10 @@ const TableButton: React.FC = () => {
       cursor: pointer;
       font-weight: ${theme.palette.fontWeight.regular};
       font-size: ${theme.palette.fontSize.extraSmall};
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.625rem;
     }
   `;
 
@@ -21,6 +27,7 @@ const TableButton: React.FC = () => {
     <div css={style}>
       <button type="button" onClick={() => console.log('a')}>
         IP 신청하기
+        <RightArrow />
       </button>
     </div>
   );
