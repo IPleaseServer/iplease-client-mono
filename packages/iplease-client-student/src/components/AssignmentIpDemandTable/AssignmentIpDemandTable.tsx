@@ -57,7 +57,7 @@ const AssignmentIpDemandTable = () => {
           </td>
         </tr>
       </table>
-      <TableButton />
+      <TableButton>IP 할당 신청하기</TableButton>
     </div>
   );
 };

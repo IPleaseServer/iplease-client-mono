@@ -4,7 +4,11 @@ import { colors, theme } from '@common/styles';
 
 import RightArrow from 'assets/RightArrow';
 
-const TableButton: React.FC = () => {
+interface TableButtonProps {
+  children: React.ReactNode;
+}
+
+const TableButton: React.FC<TableButtonProps> = ({ children }) => {
   const style = css`
     display: grid;
     place-items: center;
@@ -26,7 +30,7 @@ const TableButton: React.FC = () => {
   return (
     <div css={style}>
       <button type="button" onClick={() => console.log('a')}>
-        IP 신청하기
+        {children}
         <RightArrow />
       </button>
     </div>
