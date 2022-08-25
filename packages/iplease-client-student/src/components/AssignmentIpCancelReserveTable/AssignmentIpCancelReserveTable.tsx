@@ -40,14 +40,14 @@ const AssignmentIpCancelReserveTable = () => {
           <td>xxx.xxx.xxx.xxx</td>
           <td>2020.04.07</td>
           <td>
-            <Button text="신청 취소" size="small" color="negative" />
+            <Button text="예약 취소" size="small" color="negative" />
           </td>
         </tr>
         <tr>
           <td>xxx.xxx.xxx.xxx</td>
           <td>2020.04.07</td>
           <td>
-            <Button text="신청 취소" size="small" color="negative" />
+            <Button text="예약 취소" size="small" color="negative" />
           </td>
         </tr>
       </table>
