@@ -4,33 +4,25 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosResponse } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
 import { colors } from '@common/styles';
-import { setValue } from '@common/utils/storage/storage';
+import { getValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
-import { Link } from 'components/Common/Link';
+import { AuthCodeForm } from 'components/AuthCodeForm';
+import { EmailForm } from 'components/EmailForm';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
 
-const GSM_EMAIL_POSTFIX = '@gsm.hs.kr';
-
-// GSM 학생 이메일 정규 표현식입니다.
-const GSM_STUDENT_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
-
-const SignInForm: React.FC = () => {
+const ResetPasswrodForm: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const schema = z.object({
-    email: z
-      .string()
-      .nonempty({ message: '빈값이 들어갈 수 없어요' })
-      .regex(GSM_STUDENT_EMAIL_PREFIX_REGEX, {
-        message: '학교 이메일 형식에 맞는지 확인해주세요',
-      }),
-    password: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
+    newPassword: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
   });
 
   const {
@@ -42,19 +34,24 @@ const SignInForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
+    const emailToken = getValue<string>('emailToken');
+
+    if (!emailToken) {
+      toast.error('이메일 인증을 먼저 해주세요');
+      return;
+    }
+
     axiosClient
-      .post(accountApiUri.login(), {
-        email: data.email + GSM_EMAIL_POSTFIX,
-        password: data.password,
+      .put(accountApiUri.resetPassword(), {
+        emailToken,
+        ...data,
       })
-      .then(
-        (res: AxiosResponse<{ accessToken: string; refreshToken: string }>) => {
-          if (res.status === 200) {
-            setValue('accessToken', res.data.accessToken, true);
-            setValue('refreshToken', res.data.refreshToken, true);
-          }
+      .then((res: AxiosResponse) => {
+        if (res.status === 200) {
+          toast.success('비밀번호가 변경되었습니다');
+          navigate('/auth/signin');
         }
-      )
+      })
       .catch((err: AxiosError<{ detail: string }>) => {
         if (!err.response) return;
 
@@ -75,12 +72,20 @@ const SignInForm: React.FC = () => {
       margin-bottom: 1.75rem;
     }
     .form-field {
-      form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4375rem;
+      .authorize-email-field {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 0.875rem;
-        Button {
-          margin-top: 0.625rem;
+      }
+      .info-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4375rem;
+        button[type='submit'] {
+          margin-top: 1.0625rem;
         }
         p {
           color: ${colors.pink};
@@ -93,23 +98,7 @@ const SignInForm: React.FC = () => {
         }
       }
     }
-    .link-wrapper {
-      width: 100%;
-      display: grid;
-      place-items: center;
-    }
   `;
-
-  const href = [
-    {
-      name: '회원가입',
-      to: '/auth/signup',
-    },
-    {
-      name: '비밀번호 재설정',
-      to: '/auth/reset-password',
-    },
-  ];
 
   return (
     <div css={style}>
@@ -117,27 +106,22 @@ const SignInForm: React.FC = () => {
         <Logo />
       </div>
       <div className="form-field">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="authorize-email-field">
+          <EmailForm />
+          <AuthCodeForm />
+        </div>
+        <form className="info-form" onSubmit={handleSubmit(onSubmit)}>
           <Input
-            {...register('email')}
-            placeholder="email"
-            postfix={GSM_EMAIL_POSTFIX}
-          />
-          <ErrorMessage errors={errors} name="email" as="p" />
-          <Input
-            {...register('password')}
-            placeholder="password"
+            {...register('newPassword')}
+            placeholder="새로운 비밀번호"
             type="password"
           />
-          <ErrorMessage errors={errors} name="password" as="p" />
-          <Button type="submit" text="로그인" size="big" />
-          <div className="link-wrapper">
-            <Link href={href} />
-          </div>
+          <ErrorMessage errors={errors} name="newPassword" as="p" />
+          <Button type="submit" text="비밀번호 재설정" size="big" />
         </form>
       </div>
     </div>
   );
 };
 
-export default SignInForm;
+export default ResetPasswrodForm;
