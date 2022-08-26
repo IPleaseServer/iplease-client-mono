@@ -11,6 +11,7 @@ import { colors } from '@common/styles';
 import { setValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
+import { Link } from 'components/Common/Link';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
 
@@ -92,7 +93,23 @@ const SignInForm: React.FC = () => {
         }
       }
     }
+    .link-wrapper {
+      width: 100%;
+      display: grid;
+      place-items: center;
+    }
   `;
+
+  const href = [
+    {
+      name: '회원가입',
+      to: '/auth/signup',
+    },
+    {
+      name: '비밀번호 재설정',
+      to: '/auth/reset-password',
+    },
+  ];
 
   return (
     <div css={style}>
@@ -114,6 +131,9 @@ const SignInForm: React.FC = () => {
           />
           <ErrorMessage errors={errors} name="password" as="p" />
           <Button type="submit" text="로그인" size="big" />
+          <div className="link-wrapper">
+            <Link href={href} />
+          </div>
         </form>
       </div>
     </div>
