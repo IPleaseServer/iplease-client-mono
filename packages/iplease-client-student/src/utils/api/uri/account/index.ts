@@ -11,6 +11,9 @@ const accountApiUri = {
   // 로그인
   login: () => `${prefix}/login`,
   refresh: () => `${prefix}/login/refresh`,
+
+  // 회원정보 수정
+  resetPassword: () => `${prefix}/profile/command/password`,
 };
 
 export default accountApiUri;
