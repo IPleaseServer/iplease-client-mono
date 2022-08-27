@@ -1,16 +1,18 @@
-import React from 'react';
+import { StrictMode } from 'react';
 
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-// eslint-disable-next-line react/no-render-return-value, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+const container = document.getElementById('app');
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+
+root.render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
 );
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-root.render(<App />);
-
-reportWebVitals();
