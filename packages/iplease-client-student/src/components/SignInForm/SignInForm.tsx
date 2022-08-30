@@ -120,13 +120,13 @@ const SignInForm: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             {...register('email')}
-            placeholder="email"
+            placeholder="이메일"
             postfix={GSM_EMAIL_POSTFIX}
           />
           <ErrorMessage errors={errors} name="email" as="p" />
           <Input
             {...register('password')}
-            placeholder="password"
+            placeholder="비밀번호"
             type="password"
           />
           <ErrorMessage errors={errors} name="password" as="p" />
