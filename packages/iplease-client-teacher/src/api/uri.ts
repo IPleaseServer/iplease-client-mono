@@ -10,6 +10,10 @@ export const refreshLogin = 'account/login/refresh';
 
 export const logout = 'account/logout';
 
+export function getProfile(token: string) {
+  return `account/profile/query/access-token/${token}`;
+}
+
 export function identifier(id: string) {
   return `account/auth/teacher/${id}`;
 }
