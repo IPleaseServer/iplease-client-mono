@@ -12,6 +12,7 @@ import { getValue, setValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
 import { AuthCodeForm } from 'components/AuthCodeForm';
+import { Link } from 'components/Common/Link';
 import { EmailForm } from 'components/EmailForm';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
@@ -123,6 +124,11 @@ const SignInForm: React.FC = () => {
           text-overflow: '';
         }
       }
+      .link-wrapper {
+        width: 100%;
+        display: grid;
+        place-items: center;
+      }
     }
   `;
 
@@ -155,6 +161,14 @@ const SignInForm: React.FC = () => {
           </select>
           <ErrorMessage errors={errors} name="department" as="p" />
           <Button type="submit" text="회원가입" size="big" />
+          <div className="link-wrapper">
+            <Link
+              href={{
+                name: '로그인 페이지로 돌아가기',
+                to: '/auth/signin',
+              }}
+            />
+          </div>
         </form>
       </div>
     </div>

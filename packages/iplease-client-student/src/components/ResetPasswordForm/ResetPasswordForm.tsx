@@ -13,6 +13,7 @@ import { getValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
 import { AuthCodeForm } from 'components/AuthCodeForm';
+import { Link } from 'components/Common/Link';
 import { EmailForm } from 'components/EmailForm';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
@@ -97,6 +98,11 @@ const ResetPasswrodForm: React.FC = () => {
           padding-left: 1.2rem;
         }
       }
+      .link-wrapper {
+        width: 100%;
+        display: grid;
+        place-items: center;
+      }
     }
   `;
 
@@ -118,6 +124,14 @@ const ResetPasswrodForm: React.FC = () => {
           />
           <ErrorMessage errors={errors} name="newPassword" as="p" />
           <Button type="submit" text="비밀번호 재설정" size="big" />
+          <div className="link-wrapper">
+            <Link
+              href={{
+                name: '로그인 페이지로 돌아가기',
+                to: '/auth/signin',
+              }}
+            />
+          </div>
         </form>
       </div>
     </div>
