@@ -21461,6 +21461,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-hot-toast", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:2.3.0"],
             ["react-router-dom", "virtual:391789c518a8c0642d0c6925d68078434837c712e723c1001808b9170e17203e9d138dc60d05d4b7cf76fe1c566019d24203e14deb717c666922f51fa7c1f079#npm:6.2.1"],
             ["react-scripts", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:5.0.1"],
+            ["react-tiny-popover", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:7.1.0"],
             ["regenerator-runtime", "npm:0.13.9"],
             ["tsconfig-paths-webpack-plugin", "npm:3.5.2"],
             ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"],
@@ -29130,6 +29131,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-tiny-popover", [
+        ["npm:7.1.0", {
+          "packageLocation": "./.yarn/cache/react-tiny-popover-npm-7.1.0-cfc8120fb7-b74d268809.zip/node_modules/react-tiny-popover/",
+          "packageDependencies": [
+            ["react-tiny-popover", "npm:7.1.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:7.1.0", {
+          "packageLocation": "./.yarn/__virtual__/react-tiny-popover-virtual-b9b1e42be1/0/cache/react-tiny-popover-npm-7.1.0-cfc8120fb7-b74d268809.zip/node_modules/react-tiny-popover/",
+          "packageDependencies": [
+            ["react-tiny-popover", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:7.1.0"],
+            ["@types/react", "npm:18.0.15"],
+            ["@types/react-dom", "npm:18.0.6"],
+            ["react", "npm:18.2.0"],
+            ["react-dom", "virtual:40d7f9ffaa138e49294e502d18f847b2aaeb51a6665ba0a769fdec13cf9a762aee6a9a5a420d2a584cce90475436035f01f6a8c3616d22bb5d11e1a9df569a89#npm:18.2.0"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
             "react"
           ],
           "linkType": "HARD",

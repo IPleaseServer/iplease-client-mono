@@ -14019,6 +14019,7 @@ __metadata:
     react-hot-toast: ^2.3.0
     react-router-dom: ^6.2.1
     react-scripts: 5.0.1
+    react-tiny-popover: ^7.1.0
     regenerator-runtime: ^0.13.9
     tsconfig-paths-webpack-plugin: ^3.5.2
     typescript: ^4.5.4
@@ -20058,6 +20059,16 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
   checksum: da3d0192825df3d9f27eef33e7eddf928359a7e3e2b01ae7f7f672ecf4e5c1f7a34f27bdde9ccc24e2e9fbe1d1b9dd2a39c7d47323c9bdf63e7b9bd05c325a71
+  languageName: node
+  linkType: hard
+
+"react-tiny-popover@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "react-tiny-popover@npm:7.1.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: b74d26880916f5a921404980f662967ce88ec58bc26c5da7ff17f5882e298085a6187aeb48953c3adc6900fc917f5079020ffda8e72727b4e84549d2623977cf
   languageName: node
   linkType: hard
 
