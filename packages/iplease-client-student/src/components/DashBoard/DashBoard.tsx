@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 
 import { Heading } from '@common/components';
 
-import { AssignmentIpCancelDemandTable } from 'components/AssignmentIpCancelDemandTable';
-import { AssignmentIpCancelReserveTable } from 'components/AssignmentIpCancelReserveTable';
-import { AssignmentIpDemandTable } from 'components/AssignmentIpDemandTable';
-import { AssignmentIpTable } from 'components/AssignmentIpTable';
+import { AssignIpDemandTable } from 'components/AssignIpDemandTable';
+import { AssignIpReleaseDemandTable } from 'components/AssignIpReleaseDemandTable';
+import { AssignIpReleaseReserveTable } from 'components/AssignIpReleaseReserveTable';
+import { AssignIpTable } from 'components/AssignIpTable';
 
 const DashBoard = () => {
   const style = css`
@@ -20,19 +20,19 @@ const DashBoard = () => {
     <div css={style}>
       <Heading level="h1" text="IP 할당 신청" />
       <Heading level="h3" text="할당 IP 목록" color="black" />
-      <AssignmentIpTable />
+      <AssignIpTable />
       <div id="flex-wrapper">
-        <span>
+        <div>
           <Heading level="h3" text="IP 할당 신청 목록" color="black" />
-          <AssignmentIpDemandTable />
-        </span>
-        <span>
-          <Heading level="h3" text="IP 할당 신청 목록" color="black" />
-          <AssignmentIpCancelDemandTable />
-        </span>
+          <AssignIpDemandTable />
+        </div>
+        <div>
+          <Heading level="h3" text="할당 IP 해제 신청 목록" color="black" />
+          <AssignIpReleaseDemandTable />
+        </div>
       </div>
-      <Heading level="h3" text="IP 할당 신청 목록" color="black" />
-      <AssignmentIpCancelReserveTable />
+      <Heading level="h3" text="할당 IP 해제 예약 목록" color="black" />
+      <AssignIpReleaseReserveTable />
     </div>
   );
 };

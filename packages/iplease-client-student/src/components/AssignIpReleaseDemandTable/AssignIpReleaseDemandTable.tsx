@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
 
-const AssignmentIpCancelReserveTable = () => {
+const AssignIpReleaseDemandTable: React.FC = () => {
   const style = css`
     width: fit-content;
     padding: 1.25rem 1.875rem;
@@ -35,19 +35,16 @@ const AssignmentIpCancelReserveTable = () => {
     <div css={style}>
       <table>
         <th>IP 주소</th>
-        <th>예약일</th>
         <tr>
           <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.07</td>
           <td>
-            <Button text="예약 취소" size="small" color="negative" />
+            <Button text="신청 취소" size="small" color="negative" />
           </td>
         </tr>
         <tr>
           <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.07</td>
           <td>
-            <Button text="예약 취소" size="small" color="negative" />
+            <Button text="신청 취소" size="small" color="negative" />
           </td>
         </tr>
       </table>
@@ -55,4 +52,4 @@ const AssignmentIpCancelReserveTable = () => {
   );
 };
 
-export default AssignmentIpCancelReserveTable;
+export default AssignIpReleaseDemandTable;

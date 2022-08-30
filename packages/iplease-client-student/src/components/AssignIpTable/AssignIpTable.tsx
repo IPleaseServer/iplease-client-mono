@@ -5,7 +5,7 @@ import { colors, theme } from '@common/styles';
 
 import { TableButton } from 'components/Common/TableButton';
 
-const AssignmentIpTable = () => {
+const AssignIpTable: React.FC = () => {
   const style = css`
     width: fit-content;
     padding: 1.25rem 1.875rem;
@@ -60,4 +60,4 @@ const AssignmentIpTable = () => {
   );
 };
 
-export default AssignmentIpTable;
+export default AssignIpTable;
