@@ -7,6 +7,8 @@ import { getValue } from '@common/utils/storage/storage';
 import Logo from 'src/asset/logo';
 import URL from 'src/config/url';
 
+import MyInformation from '../myInformation';
+
 import * as S from './style';
 
 function Header(): JSX.Element {
@@ -28,7 +30,7 @@ function Header(): JSX.Element {
               <S.List isHere={isHome}>IP 할당 신청</S.List>
             </Link>
             {isLogin ? (
-              <S.List isHere={!isHome}>내 정보</S.List>
+              <MyInformation />
             ) : (
               <Link style={{ textDecoration: 'none' }} to={URL.signIn}>
                 <S.List isHere={!isHome}>로그인</S.List>
