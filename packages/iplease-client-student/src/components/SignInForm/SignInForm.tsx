@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosResponse } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
@@ -22,6 +23,7 @@ const GSM_STUDENT_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
 const SignInForm: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const schema = z.object({
     email: z
@@ -52,6 +54,7 @@ const SignInForm: React.FC = () => {
           if (res.status === 200) {
             setValue<string>('accessToken', res.data.accessToken, true);
             setValue<string>('refreshToken', res.data.refreshToken, true);
+            navigate('/home');
           }
         }
       )
