@@ -45,7 +45,7 @@ function SignUp(): JSX.Element {
 
   return (
     <S.Wrapper>
-      <Logo />
+      <Logo size="big" />
       <S.Form>
         <S.InputWrapper>
           <EmailInput />
