@@ -50,8 +50,8 @@ const SignInForm: React.FC = () => {
       .then(
         (res: AxiosResponse<{ accessToken: string; refreshToken: string }>) => {
           if (res.status === 200) {
-            setValue('accessToken', res.data.accessToken, true);
-            setValue('refreshToken', res.data.refreshToken, true);
+            setValue<string>('accessToken', res.data.accessToken, true);
+            setValue<string>('refreshToken', res.data.refreshToken, true);
           }
         }
       )
