@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import dayjs from 'dayjs';
 import toast from 'react-hot-toast';
 
-import { setValue } from '@common/utils/storage/storage';
+import { removeValue, setValue } from '@common/utils/storage/storage';
 
 import URL from 'src/config/url';
 
@@ -42,7 +42,19 @@ function login(data: loginBody) {
 }
 
 export function logout() {
-  instance.delete(uri.logout).catch(errorCatch);
+  instance
+    .delete(uri.logout)
+    .then(() => {
+      toast.success('로그아웃 성공!');
+      removeValue('accessToken', true);
+      removeValue('refreshToken', true);
+      removeValue('expiresAt', true);
+
+      setTimeout(() => {
+        global.location.replace(`/#${URL.signIn}`);
+      }, 1000);
+    })
+    .catch(errorCatch);
 }
 
 export default login;

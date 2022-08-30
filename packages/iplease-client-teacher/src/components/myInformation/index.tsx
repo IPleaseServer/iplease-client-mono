@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Popover } from 'react-tiny-popover';
 
+import { logout } from 'src/api/login';
 import getProfile from 'src/api/profile';
 import { ProfileRes } from 'types';
 
@@ -25,7 +26,7 @@ function Content(): JSX.Element {
         <S.ProfileName>{data.common.name}</S.ProfileName>
       </S.Information>
       <S.ProfileButton>프로필 수정하기</S.ProfileButton>
-      <S.Logout>로그아웃</S.Logout>
+      <S.Logout onClick={logout}>로그아웃</S.Logout>
     </>
   );
 }
