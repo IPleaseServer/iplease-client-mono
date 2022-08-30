@@ -4,6 +4,7 @@ import { Global, css } from '@emotion/react';
 import { ThemeProvider } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { theme } from '@common/styles';
 
@@ -25,11 +26,25 @@ const globalStyles = css`
 `;
 
 function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+        refetchOnReconnect: false,
+        retry: false,
+        staleTime: 60 * 1000,
+      },
+    },
+  });
+
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <AppRouter />
-      <Toaster />
+      <QueryClientProvider client={queryClient}>
+        <AppRouter />
+        <Toaster />
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
