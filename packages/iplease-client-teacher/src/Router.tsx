@@ -1,16 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 
 import URL from 'src/config/url';
-
-import ChangePassword from './pages/changePassword';
-import SignIn from './pages/signIn';
-import SignUp from './pages/signUp';
+import * as P from 'src/pages';
 
 const AppRouter: React.FC = () => (
   <Routes>
-    <Route path={URL.signUp} element={<SignUp />} />
-    <Route path={URL.signIn} element={<SignIn />} />
-    <Route path={URL.changePassword} element={<ChangePassword />} />
+    <Route path={URL.signUp} element={<P.SignUp />} />
+    <Route path={URL.signIn} element={<P.SignIn />} />
+    <Route path={URL.changePassword} element={<P.ChangePassword />} />
+    <Route path={URL.manageIpAssignments} element={<P.ManageIpAssignments />} />
   </Routes>
 );
 
