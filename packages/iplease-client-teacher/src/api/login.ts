@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import { AxiosResponse } from 'axios';
 import dayjs from 'dayjs';
 import toast from 'react-hot-toast';
@@ -35,7 +34,7 @@ function login(data: loginBody) {
         );
 
         setTimeout(() => {
-          location.replace(URL.signIn);
+          global.location.replace(`/#${URL.manageIpAssignments}`);
         }, 1000);
       }
     )
