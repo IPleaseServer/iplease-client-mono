@@ -2,7 +2,7 @@ import axios, { AxiosInstance as AxiosClient } from 'axios';
 
 import { refresh, refreshErrorHandle } from './requestHandler';
 
-const BASE_URL = 'https://644e-221-156-195-73.jp.ngrok.io';
+const BASE_URL = 'https://api.iplease.shop';
 const URL_POSTFIX = '/api/v1';
 
 const axiosClient: AxiosClient = axios.create({
