@@ -53,6 +53,11 @@ function EditProfile({
     }
   }
 
+  function onError() {
+    toast.error('이미지를 불러오는데 실패하였습니다.');
+    setIsCheck(false);
+  }
+
   return (
     <>
       <div role="none" onClick={openModal}>
@@ -67,7 +72,13 @@ function EditProfile({
       >
         <ModalHeading>프로필 수정</ModalHeading>
         <ProfileWrapper>
-          <ProfileImg size={90} src={profileImageUrlResult} />
+          <ProfileImg
+            // eslint-disable-next-line react/jsx-no-bind
+            onError={onError}
+            size={90}
+            src={profileImageUrlResult}
+            alt="프로필 이미지"
+          />
           <Input
             onChange={e => {
               setProfileImageUrl(e.currentTarget.value);
