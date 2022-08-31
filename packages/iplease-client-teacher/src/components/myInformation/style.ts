@@ -30,12 +30,6 @@ export const Information = styled.div`
   align-items: center;
 `;
 
-export const ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`;
-
 export const ProfileName = styled.h3`
   font-size: ${({ theme }) => theme.palette.fontSize.small};
   font-weight: ${({ theme }) => theme.palette.fontWeight.bold};
