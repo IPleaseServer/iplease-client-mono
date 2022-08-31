@@ -10,3 +10,14 @@ export interface ProfileRes {
     profileImage: string;
   };
 }
+
+export interface EditProfileReq {
+  type?: 'TEACHER';
+  permission: 'USER' | 'OPERATOR' | 'ADMINISTRATOR';
+  name: string;
+  emailToken?: null;
+  newEmailToken?: null;
+  profileImage: string;
+  studentNumbe?: 0;
+  department?: 'SMART_IOT';
+}
