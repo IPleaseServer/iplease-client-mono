@@ -27,7 +27,7 @@ function Header(): JSX.Element {
               style={{ textDecoration: 'none' }}
               to={URL.manageIpAssignments}
             >
-              <S.List isHere={isHome}>IP 할당 신청</S.List>
+              <S.List isHere={isHome}>IP 할당 관리</S.List>
             </Link>
             {isLogin ? (
               <MyInformation />
