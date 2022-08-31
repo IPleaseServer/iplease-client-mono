@@ -48,7 +48,9 @@ function Content(): JSX.Element {
           disabled={!isPrevious}
           onClick={() => setPageNumber(pageNumber - 1)}
         />
-        <span>{pageNumber + 1}</span>
+        <span>
+          {pageNumber + 1} / {data.totalPages}
+        </span>
         <Button
           text="다음"
           color={isNext ? 'negative' : 'default'}
