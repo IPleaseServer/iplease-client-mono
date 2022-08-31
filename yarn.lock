@@ -5880,22 +5880,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^8.5.0":
-  version: 8.16.0
-  resolution: "@testing-library/dom@npm:8.16.0"
-  dependencies:
-    "@babel/code-frame": ^7.10.4
-    "@babel/runtime": ^7.12.5
-    "@types/aria-query": ^4.2.0
-    aria-query: ^5.0.0
-    chalk: ^4.1.0
-    dom-accessibility-api: ^0.5.9
-    lz-string: ^1.4.4
-    pretty-format: ^27.0.2
-  checksum: 37aabbec872522bcb51106ecb700d9be601293e75445084b6cc195921db4b2d06d6bd4c67ad834174c129f2199c39aa540b6d17c296fcbd701dc99fd800afe36
-  languageName: node
-  linkType: hard
-
 "@testing-library/jest-dom@npm:^5.16.1":
   version: 5.16.1
   resolution: "@testing-library/jest-dom@npm:5.16.1"
@@ -5910,23 +5894,6 @@ __metadata:
     lodash: ^4.17.15
     redent: ^3.0.0
   checksum: c5e3b5b021b50478137f96b85f8f6f86d2b25555d2501548982e093986f9c089c7b394449c30283ca3e28a50e845587403d9124ad1b516c55cf9af20a0fbbde4
-  languageName: node
-  linkType: hard
-
-"@testing-library/jest-dom@npm:^5.16.4":
-  version: 5.16.4
-  resolution: "@testing-library/jest-dom@npm:5.16.4"
-  dependencies:
-    "@babel/runtime": ^7.9.2
-    "@types/testing-library__jest-dom": ^5.9.1
-    aria-query: ^5.0.0
-    chalk: ^3.0.0
-    css: ^3.0.0
-    css.escape: ^1.5.1
-    dom-accessibility-api: ^0.5.6
-    lodash: ^4.17.15
-    redent: ^3.0.0
-  checksum: 4240501223b72b97a44d4e3c669f39b208c49fb645d11d08d5f178d607265c5dfad07efbe027f41a0e2458178ff1fd5bf437fc05661b9109dcd013b95a37079e
   languageName: node
   linkType: hard
 
@@ -5962,20 +5929,6 @@ __metadata:
     react: "*"
     react-dom: "*"
   checksum: 70b0f7f27c83fe1a33e7df01b1e64850fbab4050c403848d611d852cadaa25ccde58518773002ae569a1350b2282c2ccbcbe5eb6af8b29ab377ab2a8ab573b3b
-  languageName: node
-  linkType: hard
-
-"@testing-library/react@npm:^13.3.0":
-  version: 13.3.0
-  resolution: "@testing-library/react@npm:13.3.0"
-  dependencies:
-    "@babel/runtime": ^7.12.5
-    "@testing-library/dom": ^8.5.0
-    "@types/react-dom": ^18.0.0
-  peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  checksum: 98fd8616a7cae0ecfcbe97b5b3c5b91fbafccf449c04875395ccc0e3f0b139e53b3261b9536ec2169a5e2883a1be2098907209064061fe0c2ff21dfbc785dd40
   languageName: node
   linkType: hard
 
@@ -6322,16 +6275,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.5.2":
-  version: 27.5.2
-  resolution: "@types/jest@npm:27.5.2"
-  dependencies:
-    jest-matcher-utils: ^27.0.0
-    pretty-format: ^27.0.0
-  checksum: 7e11c6826aa429ad990dc262e4e4b54aa36573287fddf15773e4137f07d11d3105f0dd9f1baff73252160a057df23f5529bb83b1bf83cd3f45f9460a5ca5c22e
-  languageName: node
-  linkType: hard
-
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.4, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
@@ -6486,7 +6429,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0, @types/react-dom@npm:^18.0.6":
+"@types/react-dom@npm:^18.0.6":
   version: 18.0.6
   resolution: "@types/react-dom@npm:18.0.6"
   dependencies:
@@ -14048,10 +13991,6 @@ __metadata:
     "@emotion/react": ^11.7.1
     "@emotion/styled": ^11.9.3
     "@hookform/resolvers": ^2.8.5
-    "@testing-library/jest-dom": ^5.16.4
-    "@testing-library/react": ^13.3.0
-    "@testing-library/user-event": ^13.5.0
-    "@types/jest": ^27.5.2
     "@types/node": ^16.11.43
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
@@ -15244,18 +15183,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:^27.0.0, jest-matcher-utils@npm:^27.5.1":
-  version: 27.5.1
-  resolution: "jest-matcher-utils@npm:27.5.1"
-  dependencies:
-    chalk: ^4.0.0
-    jest-diff: ^27.5.1
-    jest-get-type: ^27.5.1
-    pretty-format: ^27.5.1
-  checksum: bb2135fc48889ff3fe73888f6cc7168ddab9de28b51b3148f820c89fdfd2effdcad005f18be67d0b9be80eda208ad47290f62f03d0a33f848db2dd0273c8217a
-  languageName: node
-  linkType: hard
-
 "jest-matcher-utils@npm:^27.4.6":
   version: 27.4.6
   resolution: "jest-matcher-utils@npm:27.4.6"
@@ -15265,6 +15192,18 @@ __metadata:
     jest-get-type: ^27.4.0
     pretty-format: ^27.4.6
   checksum: 445a8cc9eaa7cb08653a10cfc4f109eca76a97d1b1d3a01067bd77efa9cb3a554b74c7402a4c9d5083b21e11218e1515ef538faa47fa47c282072b4825f6b307
+  languageName: node
+  linkType: hard
+
+"jest-matcher-utils@npm:^27.5.1":
+  version: 27.5.1
+  resolution: "jest-matcher-utils@npm:27.5.1"
+  dependencies:
+    chalk: ^4.0.0
+    jest-diff: ^27.5.1
+    jest-get-type: ^27.5.1
+    pretty-format: ^27.5.1
+  checksum: bb2135fc48889ff3fe73888f6cc7168ddab9de28b51b3148f820c89fdfd2effdcad005f18be67d0b9be80eda208ad47290f62f03d0a33f848db2dd0273c8217a
   languageName: node
   linkType: hard
 
