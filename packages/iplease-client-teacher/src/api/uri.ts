@@ -14,6 +14,10 @@ export const editProfile = 'account/profile/command';
 
 export const getAssignIp = 'assign-ip/query/all';
 
+export function deleteAssignIp(assignIpId: number) {
+  return `assign-ip/command/${assignIpId}`;
+}
+
 export function getProfile(token: string) {
   return `account/profile/query/access-token/${token}`;
 }

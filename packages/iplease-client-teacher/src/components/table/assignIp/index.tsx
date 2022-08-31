@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 import { Button } from '@common/components';
 
-import getAssignIp, { PageAssignIp } from 'src/api/assignIp';
+import getAssignIp, { PageAssignIp, deleteAssignIp } from 'src/api/assignIp';
 
 import Table from '../base';
 
@@ -37,7 +37,13 @@ function Content(): JSX.Element {
           <td>{content.assignerId}</td>
           <td>{content.assigneeId}</td>
           <td>
-            <Button text="해지" color="negative" />
+            <Button
+              onClick={() => {
+                deleteAssignIp(content.id);
+              }}
+              text="해지"
+              color="negative"
+            />
           </td>
         </tr>
       ))}
