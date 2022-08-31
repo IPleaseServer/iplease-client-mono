@@ -3,9 +3,13 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Popover } from 'react-tiny-popover';
 
+import instance from 'src/api/axois/axois';
 import { logout } from 'src/api/login';
 import getProfile from 'src/api/profile';
+import ProfileImg from 'src/style/profileImg';
 import { ProfileRes } from 'types';
+
+import EditProfile from '../modal/editProfile';
 
 import * as S from './style';
 
@@ -19,13 +23,23 @@ function Content(): JSX.Element {
 
   if (isError || !data) return <>error</>;
 
+  const { profileImage, name, permission, accountId } = data.common;
+
+  instance.defaults.headers.common['X-Authorization-Id'] = accountId;
+
   return (
     <>
       <S.Information>
-        <S.ProfileImg src={data.common.profileImage} />
-        <S.ProfileName>{data.common.name}</S.ProfileName>
+        <ProfileImg size={50} src={profileImage} />
+        <S.ProfileName>{name}</S.ProfileName>
       </S.Information>
-      <S.ProfileButton>프로필 수정하기</S.ProfileButton>
+      <EditProfile
+        permission={permission}
+        name={name}
+        profileImage={profileImage}
+      >
+        <S.ProfileButton>프로필 수정하기</S.ProfileButton>
+      </EditProfile>
       <S.Logout onClick={logout}>로그아웃</S.Logout>
     </>
   );
