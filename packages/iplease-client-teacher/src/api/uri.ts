@@ -12,6 +12,8 @@ export const logout = 'account/logout';
 
 export const editProfile = 'account/profile/command';
 
+export const getAssignIp = 'assign-ip/query/all';
+
 export function getProfile(token: string) {
   return `account/profile/query/access-token/${token}`;
 }
