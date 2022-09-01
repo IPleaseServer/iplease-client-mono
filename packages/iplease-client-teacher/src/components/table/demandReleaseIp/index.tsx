@@ -8,7 +8,6 @@ import getDemandReleaseIp, {
   DemandReleaseIp,
   PageDemandReleaseIp,
 } from 'src/api/demandReleaseIp';
-import Reject from 'src/components/modal/reject';
 
 import Table from '../base';
 import GetUserName from '../getUserName';
@@ -28,9 +27,6 @@ function Content({ data }: ContentProps): JSX.Element {
           </td>
           <td title="IP 주소">{ReleaseIpId}</td>
           <td>
-            <Reject id={id}>
-              <Button title="신청 거절하기" text="거절" color="negative" />
-            </Reject>
             <Button title="신청 수락하기" text="수락" color="primary" />
           </td>
         </tr>
