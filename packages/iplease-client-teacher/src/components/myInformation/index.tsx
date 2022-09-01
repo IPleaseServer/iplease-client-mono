@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { Popover } from 'react-tiny-popover';
 
-import instance from 'src/api/axois/axois';
 import { logout } from 'src/api/login';
 import getProfile from 'src/api/profile';
 import ProfileImg from 'src/style/profileImg';
@@ -23,9 +22,7 @@ function Content(): JSX.Element {
 
   if (isError || !data) return <>error</>;
 
-  const { profileImage, name, permission, accountId } = data.common;
-
-  instance.defaults.headers.common['X-Authorization-Id'] = accountId;
+  const { profileImage, name, permission } = data.common;
 
   return (
     <>
