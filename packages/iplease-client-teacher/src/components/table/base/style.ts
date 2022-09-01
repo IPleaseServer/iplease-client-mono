@@ -28,6 +28,12 @@ export const TableBox = styled.div`
     font-weight: 700;
     font-size: 15px;
   }
+  td {
+    padding-right: 45px;
+  }
+  button {
+    margin-right: 10px;
+  }
   thead,
   tr {
     width: 100%;
@@ -36,5 +42,6 @@ export const TableBox = styled.div`
   td:nth-child(4) {
     display: flex;
     justify-content: flex-end;
+    padding-right: 0;
   }
 `;
