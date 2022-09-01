@@ -9,29 +9,10 @@ import getAssignIp, {
   AssignIp,
   deleteAssignIp,
 } from 'src/api/assignIp';
-import { getProfileUsingId } from 'src/api/profile';
 
 import Table from '../base';
+import GetUserName from '../getUserName';
 import PageNumberButton from '../pageManageButton';
-
-interface GetUserNameProps {
-  id: number;
-  key: string;
-}
-
-function GetUserName({ id, key }: GetUserNameProps): JSX.Element {
-  const { data, isLoading, isError } = useQuery<string>(
-    ['getProfile', id, key],
-    () => getProfileUsingId(id)
-  );
-
-  if (isLoading) return <>loading</>;
-
-  if (isError || !data) return <>error</>;
-
-  // eslint-disable-next-line react/jsx-no-useless-fragment
-  return <>{data}</>;
-}
 
 interface ContentProps {
   data: AssignIp[];
