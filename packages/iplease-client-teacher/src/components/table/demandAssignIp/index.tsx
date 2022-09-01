@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-import toast from 'react-hot-toast';
 import { useQuery, useQueryClient } from 'react-query';
 
 import { Button } from '@common/components';
@@ -10,6 +9,7 @@ import getDemandAssignIp, {
   DemandAssignIp,
 } from 'src/api/demandAssignIp';
 import About from 'src/components/modal/about';
+import Reject from 'src/components/modal/reject';
 
 import Table from '../base';
 import GetUserName from '../getUserName';
@@ -39,14 +39,16 @@ function Content({ data }: ContentProps): JSX.Element {
           </td>
           <td title="사용종료일">{expireAt}</td>
           <td>
-            <Button
-              onClick={() => {
-                queryClient.invalidateQueries('getDemandAssignIp');
-              }}
-              title="신청 거절하기"
-              text="거절"
-              color="negative"
-            />
+            <Reject id={id}>
+              <Button
+                onClick={() => {
+                  queryClient.invalidateQueries('getDemandAssignIp');
+                }}
+                title="신청 거절하기"
+                text="거절"
+                color="negative"
+              />
+            </Reject>
             <Button
               onClick={() => {
                 queryClient.invalidateQueries('getDemandAssignIp');

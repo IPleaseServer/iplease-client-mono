@@ -16,6 +16,10 @@ export const getAssignIp = 'assign-ip/query/all';
 
 export const getDemandAssignIp = 'demand/assign/query/all';
 
+export function rejectDemandAssignIp(demandId: number) {
+  return `demand/status/command/${demandId}/reject`;
+}
+
 export function deleteAssignIp(assignIpId: number) {
   return `assign-ip/command/${assignIpId}`;
 }
