@@ -18,6 +18,10 @@ export const getDemandAssignIp = 'demand/assign/query/all';
 
 export const getDemandReleaseIp = 'demand/release/query/all';
 
+export function acceptDemandReleaseIp(demandId: number) {
+  return `demand/release/command/${demandId}/status/accept`;
+}
+
 export function acceptDemandAssignIp(demandId: number) {
   return `demand/status/command/${demandId}/accept`;
 }

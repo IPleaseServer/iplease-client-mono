@@ -24,4 +24,11 @@ async function getDemandReleaseIp(page: number): Promise<PageDemandReleaseIp> {
   return result.data.data;
 }
 
+export async function acceptDemandReleaseIp(demandId: number): Promise<number> {
+  const result = await instance.put<{
+    demandId: number;
+  }>(uri.acceptDemandReleaseIp(demandId));
+  return result.data.demandId;
+}
+
 export default getDemandReleaseIp;
