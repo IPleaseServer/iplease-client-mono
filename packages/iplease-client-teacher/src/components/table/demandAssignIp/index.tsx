@@ -9,6 +9,7 @@ import getDemandAssignIp, {
   PageDemandAssignIp,
   DemandAssignIp,
 } from 'src/api/demandAssignIp';
+import About from 'src/components/modal/about';
 
 import Table from '../base';
 import GetUserName from '../getUserName';
@@ -24,19 +25,17 @@ function Content({ data }: ContentProps): JSX.Element {
   const queryClient = useQueryClient();
   return (
     <>
-      {data.map(({ id, issuerId, title, expireAt }) => (
+      {data.map(({ id, issuerId, title, expireAt, description }) => (
         <tr key={id}>
           <td title="신청자">
             <GetUserName id={issuerId} key="issuerId" />
           </td>
           <td>
-            <AboutButton
-              type="button"
-              title="누르면 자세히 볼 수 있습니다."
-              onClick={() => toast.success('자세히 보기')}
-            >
-              {title.length > 25 ? `${title.substring(0, 25)}...` : title}
-            </AboutButton>
+            <About title={title} content={description}>
+              <AboutButton type="button" title="누르면 자세히 볼 수 있습니다.">
+                {title.length > 25 ? `${title.substring(0, 25)}...` : title}
+              </AboutButton>
+            </About>
           </td>
           <td title="사용종료일">{expireAt}</td>
           <td>
