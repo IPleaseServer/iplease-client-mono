@@ -30,9 +30,6 @@ function Accept({ children, id }: AcceptProps): JSX.Element {
 
   const [IP, setIP] = useState<string>();
 
-  const [isCheck, setIsCheck] = useState(false);
-  const regex = /\d{3}.\d{3}.\d{3}.\d{3}/g;
-
   const { mutate } = useMutation(
     ({ demandId, assignIp }: acceptDemandAssignIpRes) =>
       acceptDemandAssignIp({ demandId, assignIp }),
@@ -76,18 +73,13 @@ function Accept({ children, id }: AcceptProps): JSX.Element {
             onChange={e => {
               const limitValue = e.currentTarget.value.slice(0, 15);
               setIP(limitValue);
-              if (regex.test(e.currentTarget.value)) setIsCheck(true);
-              else setIsCheck(false);
             }}
           />
-          {!isCheck && (
-            <S.Description>XXX.XXX.XXX.XXX 형식을 맞춰주세요.</S.Description>
-          )}
         </S.InputWrapper>
         <Button
           size="big"
-          color={!isCheck ? 'default' : 'primary'}
-          disabled={!isCheck}
+          color={!IP ? 'default' : 'primary'}
+          disabled={!IP}
           onClick={() => onClick()}
         >
           확인
