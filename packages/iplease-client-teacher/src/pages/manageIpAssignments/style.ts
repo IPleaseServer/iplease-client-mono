@@ -10,3 +10,8 @@ export const H1 = styled.h1`
   color: ${({ theme }) => theme.palette.hue.pink};
   font-weight: ${({ theme }) => theme.palette.fontWeight.bold};
 `;
+
+export const Section = styled.section`
+  display: flex;
+  gap: 50px;
+`;
