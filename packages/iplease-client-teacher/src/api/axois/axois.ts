@@ -7,6 +7,7 @@ import BASE_URL from '../uri';
 import { refresh, refreshErrorHandle } from './refresh';
 
 const accessToken: string = getValue('accessToken') ?? '';
+const accountId: string = getValue('accountId') ?? '';
 
 const instance = axios.create({
   baseURL: BASE_URL,
@@ -17,6 +18,7 @@ const instance = axios.create({
     'Access-Control-Allow-Headers':
       'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials, X-Authentication-Token',
     Authorization: `Bearer ${accessToken}`,
+    'X-Authorization-Id': accountId,
   },
   withCredentials: true,
 });
