@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { getProfileUsingId } from 'src/api/uri';
+import { getProfileUsingId } from 'src/api/profile';
 
 interface UserNameProps {
   id: number;
