@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 
-import { useQuery } from 'react-query';
+import { AxiosError } from 'axios';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 import { Button } from '@common/components';
 
+import errorCatch from 'src/api/axois/error';
 import getDemandReleaseIp, {
+  acceptDemandReleaseIp,
   DemandReleaseIp,
   PageDemandReleaseIp,
 } from 'src/api/demandReleaseIp';
@@ -18,6 +21,23 @@ interface ContentProps {
 }
 
 function Content({ data }: ContentProps): JSX.Element {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation(
+    (demandId: number) => acceptDemandReleaseIp(demandId),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('getDemandReleaseIp');
+      },
+      onError: (
+        err: AxiosError<{
+          message: string;
+          detail: string;
+        }>
+      ) => {
+        errorCatch(err);
+      },
+    }
+  );
   return (
     <>
       {data.map(({ id, issuerId, ReleaseIpId }) => (
@@ -27,7 +47,12 @@ function Content({ data }: ContentProps): JSX.Element {
           </td>
           <td title="IP 주소">{ReleaseIpId}</td>
           <td>
-            <Button title="신청 수락하기" text="수락" color="primary" />
+            <Button
+              onClick={() => mutate(id)}
+              title="신청 수락하기"
+              text="수락"
+              color="primary"
+            />
           </td>
         </tr>
       ))}
