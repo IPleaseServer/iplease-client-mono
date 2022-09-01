@@ -22,6 +22,11 @@ export interface rejectDemandAssignIpRes {
   reason: string;
 }
 
+export interface acceptDemandAssignIpRes {
+  demandId: number;
+  assignIp: string;
+}
+
 async function getDemandAssignIp(page: number): Promise<PageDemandAssignIp> {
   const result = await instance.get<{ data: PageDemandAssignIp }>(
     uri.getDemandAssignIp,
@@ -32,15 +37,23 @@ async function getDemandAssignIp(page: number): Promise<PageDemandAssignIp> {
   return result.data.data;
 }
 
-export async function rejectDemandAssignIp(
-  data: rejectDemandAssignIpRes
-): Promise<number> {
+export async function rejectDemandAssignIp(data: rejectDemandAssignIpRes) {
   const { demandId, reason } = data;
   const result = await instance.put<{
     demandId: number;
   }>(uri.rejectDemandAssignIp(demandId), {
     reason,
   });
+  return result.data.demandId;
+}
+
+export async function acceptDemandAssignIp({
+  demandId,
+  assignIp,
+}: acceptDemandAssignIpRes) {
+  const result = await instance.put<{
+    demandId: number;
+  }>(uri.acceptDemandAssignIp(demandId), { assignIp });
   return result.data.demandId;
 }
 

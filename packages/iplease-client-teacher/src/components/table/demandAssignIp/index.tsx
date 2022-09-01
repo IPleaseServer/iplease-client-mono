@@ -9,6 +9,7 @@ import getDemandAssignIp, {
   DemandAssignIp,
 } from 'src/api/demandAssignIp';
 import About from 'src/components/modal/about';
+import Accept from 'src/components/modal/accept';
 import Reject from 'src/components/modal/reject';
 
 import Table from '../base';
@@ -49,14 +50,16 @@ function Content({ data }: ContentProps): JSX.Element {
                 color="negative"
               />
             </Reject>
-            <Button
-              onClick={() => {
-                queryClient.invalidateQueries('getDemandAssignIp');
-              }}
-              title="신청 수락하기"
-              text="수락"
-              color="primary"
-            />
+            <Accept id={id}>
+              <Button
+                onClick={() => {
+                  queryClient.invalidateQueries('getDemandAssignIp');
+                }}
+                title="신청 수락하기"
+                text="수락"
+                color="primary"
+              />
+            </Accept>
           </td>
         </tr>
       ))}
