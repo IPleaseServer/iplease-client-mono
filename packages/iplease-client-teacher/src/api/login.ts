@@ -8,6 +8,7 @@ import URL from 'src/config/url';
 
 import instance from './axois/axois';
 import errorCatch from './axois/error';
+import getProfile from './profile';
 import * as uri from './uri';
 
 interface loginBody {
@@ -32,6 +33,9 @@ function login(data: loginBody) {
           dayjs().add(1, 'hour').format('yyyy-MM-DD HH:mm:ss'),
           true
         );
+        getProfile().then(({ common }) =>
+          setValue('accoundId', common.accountId, true)
+        );
 
         setTimeout(() => {
           global.location.replace(`/#${URL.manageIpAssignments}`);
@@ -49,6 +53,7 @@ export function logout() {
       removeValue('accessToken', true);
       removeValue('refreshToken', true);
       removeValue('expiresAt', true);
+      removeValue('accoundId', true);
 
       setTimeout(() => {
         global.location.replace(`/#${URL.signIn}`);
