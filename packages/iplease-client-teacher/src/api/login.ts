@@ -34,7 +34,7 @@ function login(data: loginBody) {
           true
         );
         getProfile().then(({ common }) =>
-          setValue('accoundId', common.accountId, true)
+          setValue('accountId', common.accountId, true)
         );
 
         setTimeout(() => {
@@ -53,7 +53,7 @@ export function logout() {
       removeValue('accessToken', true);
       removeValue('refreshToken', true);
       removeValue('expiresAt', true);
-      removeValue('accoundId', true);
+      removeValue('accountId', true);
 
       setTimeout(() => {
         global.location.replace(`/#${URL.signIn}`);
