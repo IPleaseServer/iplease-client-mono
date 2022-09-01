@@ -17,7 +17,8 @@ export const TableBox = styled.div`
   padding: 20px 30px;
   box-shadow: 0px 6px 12px rgba(51, 51, 51, 0.08);
   border-radius: ${({ theme }) => theme.palette.borderRadius};
-  width: 40%;
+  width: fit-content;
+  min-width: 40%;
   margin-top: 15px;
   table {
     width: 100%;
