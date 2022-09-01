@@ -12,6 +12,7 @@ import getAssignIp, {
 import { getProfileUsingId } from 'src/api/profile';
 
 import Table from '../base';
+import PageNumberButton from '../pageManageButton';
 
 interface GetUserNameProps {
   id: number;
@@ -30,45 +31,6 @@ function GetUserName({ id, key }: GetUserNameProps): JSX.Element {
 
   // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{data}</>;
-}
-
-interface PageNumberButtonProps {
-  first: boolean;
-  last: boolean;
-  totalPages: number;
-  pageNumber: number;
-  setPageNumber: React.Dispatch<React.SetStateAction<number>>;
-}
-
-function PageNumberButton({
-  first,
-  last,
-  totalPages,
-  pageNumber,
-  setPageNumber,
-}: PageNumberButtonProps): JSX.Element {
-  return (
-    <>
-      <div>더 이상 데이터가 없어요</div>
-      <div>
-        <Button
-          text="이전"
-          color={first ? 'default' : 'negative'}
-          disabled={first}
-          onClick={() => setPageNumber(pageNumber - 1)}
-        />
-        <span>
-          {pageNumber + 1} / {totalPages}
-        </span>
-        <Button
-          text="다음"
-          color={last ? 'default' : 'negative'}
-          disabled={last}
-          onClick={() => setPageNumber(pageNumber + 1)}
-        />
-      </div>
-    </>
-  );
 }
 
 interface ContentProps {

@@ -36,9 +36,4 @@ export const TableBox = styled.div`
     display: flex;
     justify-content: flex-end;
   }
-  div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
 `;
