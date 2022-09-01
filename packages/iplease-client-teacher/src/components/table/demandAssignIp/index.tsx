@@ -23,7 +23,6 @@ interface ContentProps {
 }
 
 function Content({ data }: ContentProps): JSX.Element {
-  const queryClient = useQueryClient();
   return (
     <>
       {data.map(({ id, issuerId, title, expireAt, description }) => (
@@ -41,24 +40,10 @@ function Content({ data }: ContentProps): JSX.Element {
           <td title="사용종료일">{expireAt}</td>
           <td>
             <Reject id={id}>
-              <Button
-                onClick={() => {
-                  queryClient.invalidateQueries('getDemandAssignIp');
-                }}
-                title="신청 거절하기"
-                text="거절"
-                color="negative"
-              />
+              <Button title="신청 거절하기" text="거절" color="negative" />
             </Reject>
             <Accept id={id}>
-              <Button
-                onClick={() => {
-                  queryClient.invalidateQueries('getDemandAssignIp');
-                }}
-                title="신청 수락하기"
-                text="수락"
-                color="primary"
-              />
+              <Button title="신청 수락하기" text="수락" color="primary" />
             </Accept>
           </td>
         </tr>
