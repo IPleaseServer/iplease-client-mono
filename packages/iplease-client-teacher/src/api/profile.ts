@@ -12,6 +12,11 @@ async function getProfile(): Promise<ProfileRes> {
   return result.data;
 }
 
+export async function getProfileUsingId(id: number): Promise<string> {
+  const result = await instance.get<ProfileRes>(uri.getProfileUsingId(id));
+  return result.data.common.name;
+}
+
 export function editProfile({
   permission,
   profileImage,

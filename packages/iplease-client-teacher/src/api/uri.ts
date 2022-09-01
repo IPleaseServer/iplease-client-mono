@@ -22,6 +22,10 @@ export function getProfile(token: string) {
   return `account/profile/query/access-token/${token}`;
 }
 
+export function getProfileUsingId(id: number) {
+  return `account/profile/query/id/${id}`;
+}
+
 export function identifier(id: string) {
   return `account/auth/teacher/${id}`;
 }

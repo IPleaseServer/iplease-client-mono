@@ -2,7 +2,7 @@ import instance from './axois/axois';
 import errorCatch from './axois/error';
 import * as uri from './uri';
 
-interface AssignIp {
+export interface AssignIp {
   id: number;
   ip: string;
   assigneeId: number;
@@ -12,6 +12,8 @@ interface AssignIp {
 export interface PageAssignIp {
   totalPages: number;
   content: AssignIp[];
+  first: boolean;
+  last: boolean;
   pageable: { pageNumber: number };
 }
 
@@ -23,7 +25,7 @@ async function getAssignIp(page: number): Promise<PageAssignIp> {
 }
 
 export function deleteAssignIp(assignIpId: number) {
-  instance.post(uri.deleteAssignIp(assignIpId)).catch(errorCatch);
+  instance.delete(uri.deleteAssignIp(assignIpId)).catch(errorCatch);
 }
 
 export default getAssignIp;

@@ -11,6 +11,9 @@ export const TableName = styled.h2`
 
 export const TableBox = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
   padding: 20px 30px;
   box-shadow: 0px 6px 12px rgba(51, 51, 51, 0.08);
   border-radius: ${({ theme }) => theme.palette.borderRadius};
@@ -34,10 +37,7 @@ export const TableBox = styled.div`
     justify-content: flex-end;
   }
   div {
-    margin-top: 30px;
-    width: 200%;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
   }
