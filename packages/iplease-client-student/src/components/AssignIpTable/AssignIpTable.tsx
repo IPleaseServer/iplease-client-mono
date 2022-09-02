@@ -1,11 +1,29 @@
+import { useEffect, useState } from 'react';
+
 import { css } from '@emotion/react';
+import { AxiosResponse } from 'axios';
 
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
 
 import { TableButton } from 'components/Common/TableButton';
+import {
+  IAssignIpInfo,
+  IAssignIpResponse,
+  IReleaseReserveAssignIpResponse,
+} from 'src/@types/internet-protocol.type';
+import axiosClient from 'utils/api/axios';
+import ipApiUri from 'utils/api/uri/internet-protocol';
+
+interface ITableData {
+  id: number;
+  ip: string;
+  releaseAt: number;
+}
 
 const AssignIpTable: React.FC = () => {
+  const [tableData, setTableData] = useState<ITableData[]>([]);
+
   const style = css`
     width: fit-content;
     padding: 1.25rem 1.875rem;
@@ -35,26 +53,64 @@ const AssignIpTable: React.FC = () => {
     margin-bottom: 3.125rem;
   `;
 
+  const handleTableData = () => {
+    axiosClient.get(ipApiUri.queryAll(10)).then(
+      ({
+        data: {
+          data: { content },
+        },
+      }: AxiosResponse<IAssignIpResponse>) => {
+        if (content.length > 0) {
+          content.forEach((assignIpInfo: IAssignIpInfo) => {
+            axiosClient
+              .get(ipApiUri.queryReserveReleaseIp(assignIpInfo.id))
+              .then(
+                ({
+                  data: {
+                    data: { releaseAt },
+                  },
+                }: AxiosResponse<IReleaseReserveAssignIpResponse>) => {
+                  setTableData((prev: ITableData[]) => [
+                    ...prev,
+                    {
+                      id: assignIpInfo.id,
+                      ip: assignIpInfo.ip,
+                      releaseAt,
+                    },
+                  ]);
+                }
+              );
+          });
+        }
+      }
+    );
+  };
+
+  useEffect(() => {
+    handleTableData();
+  }, []);
+
   return (
     <div css={style}>
-      <table>
-        <th>IP 주소</th>
-        <th>종료일</th>
-        <tr>
-          <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.14</td>
-          <td>
-            <Button text="해제 신청" size="small" color="negative" />
-          </td>
-        </tr>
-        <tr>
-          <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.14</td>
-          <td>
-            <Button text="해제 신청" size="small" color="negative" />
-          </td>
-        </tr>
-      </table>
+      {tableData.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>IP 주소</th>
+              <th>종료일</th>
+            </tr>
+          </thead>
+          {tableData.map((assignIpInfo: ITableData) => (
+            <tr key={assignIpInfo.id}>
+              <td>{assignIpInfo.ip}</td>
+              <td>{assignIpInfo.releaseAt}</td>
+              <td>
+                <Button text="해제 신청" size="small" color="negative" />
+              </td>
+            </tr>
+          ))}
+        </table>
+      )}
       <TableButton>IP 신청하기</TableButton>
     </div>
   );
