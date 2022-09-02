@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { Button } from '@common/components';
 
 import getDemandAssignIp, {
   PageDemandAssignIp,
   DemandAssignIp,
+  acceptDemandAssignIpStatus,
 } from 'src/api/demandAssignIp';
 import About from 'src/components/modal/about';
 import Accept from 'src/components/modal/accept';
@@ -65,6 +66,11 @@ function DemandAssignIpTable(): JSX.Element {
 
   const { content, first, last, totalPages } = data;
 
+  const filterContent = content.filter(async ipData => {
+    const res = await acceptDemandAssignIpStatus(ipData.id);
+    return res === 'CREATE' || 'CONFIRM';
+  });
+
   return (
     <Table title="IP 할당 신청 목록">
       <table>
@@ -73,7 +79,7 @@ function DemandAssignIpTable(): JSX.Element {
           <th>사용이유</th>
           <th>사용종료일</th>
         </tr>
-        <Content data={content} />
+        <Content data={filterContent} />
       </table>
       <PageNumberButton
         first={first}

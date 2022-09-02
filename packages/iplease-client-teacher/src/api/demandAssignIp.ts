@@ -57,4 +57,15 @@ export async function acceptDemandAssignIp({
   return result.data.demandId;
 }
 
+type Status = 'CREATE' | 'CONFIRM' | 'REJECT' | 'ACCEPT';
+
+export async function acceptDemandAssignIpStatus(
+  demandId: number
+): Promise<Status> {
+  const result = await instance.get<{
+    status: Status;
+  }>(uri.acceptDemandAssignIpStatus(demandId));
+  return result.data.status;
+}
+
 export default getDemandAssignIp;
