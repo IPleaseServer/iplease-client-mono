@@ -5,6 +5,7 @@ export interface DemandReleaseIp {
   id: number;
   ReleaseIpId: number;
   issuerId: number;
+  status: 'CREATE' | 'ACCEPT';
 }
 
 export interface PageDemandReleaseIp {

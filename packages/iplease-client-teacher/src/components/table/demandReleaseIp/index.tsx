@@ -73,6 +73,8 @@ function DemandReleaseIpTable(): JSX.Element {
 
   const { content, first, last, totalPages } = data;
 
+  const filterContent = content.filter(ipData => ipData.status === 'CREATE');
+
   return (
     <Table title="IP 할당 신청 목록">
       <table>
@@ -80,7 +82,7 @@ function DemandReleaseIpTable(): JSX.Element {
           <th>신청자</th>
           <th>IP 주소</th>
         </tr>
-        <Content data={content} />
+        <Content data={filterContent} />
       </table>
       <PageNumberButton
         first={first}
