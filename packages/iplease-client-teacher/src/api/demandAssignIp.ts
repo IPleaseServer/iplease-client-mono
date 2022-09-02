@@ -68,4 +68,11 @@ export async function acceptDemandAssignIpStatus(
   return result.data.status;
 }
 
+export async function confirmDemandAssignIp(demandId: number): Promise<number> {
+  const result = await instance.put<{
+    demandId: number;
+  }>(uri.confirmDemandAssignIp(demandId));
+  return result.data.demandId;
+}
+
 export default getDemandAssignIp;

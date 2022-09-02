@@ -8,6 +8,7 @@ import getDemandAssignIp, {
   PageDemandAssignIp,
   DemandAssignIp,
   acceptDemandAssignIpStatus,
+  confirmDemandAssignIp,
 } from 'src/api/demandAssignIp';
 import About from 'src/components/modal/about';
 import Accept from 'src/components/modal/accept';
@@ -33,7 +34,13 @@ function Content({ data }: ContentProps): JSX.Element {
           </td>
           <td>
             <About title={title} content={description}>
-              <AboutButton type="button" title="누르면 자세히 볼 수 있습니다.">
+              <AboutButton
+                onClick={() => {
+                  confirmDemandAssignIp(id);
+                }}
+                type="button"
+                title="누르면 자세히 볼 수 있습니다."
+              >
                 {title.length > 25 ? `${title.substring(0, 25)}...` : title}
               </AboutButton>
             </About>
