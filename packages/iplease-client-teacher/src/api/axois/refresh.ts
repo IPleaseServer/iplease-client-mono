@@ -27,7 +27,7 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           setValue<string>('refreshToken', res.data.refreshToken, true);
           setValue<string>(
             'expiresAt',
-            dayjs('YYYY-MM-DD HH:mm:ss').add(1, 'hour').toString(),
+            dayjs().add(1, 'h').format('YYYY-MM-DD HH:mm:ss'),
             true
           );
         }
@@ -41,7 +41,8 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           global.location.replace(`/#${URL.signIn}`);
         }, 1000);
       });
-  } else if (dayjs().isBefore(expireAt) || !refreshToken) {
+  } else if (!dayjs().isBefore(expireAt) || !refreshToken) {
+    toast.error('다시 로그인해주세요.');
     removeValue('accessToken', true);
     removeValue('refreshToken', true);
     removeValue('expiresAt', true);
