@@ -7,11 +7,11 @@ export const Wrapper = styled.main`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  gap: 24px;
+  gap: 1.5rem;
 `;
 
 export const Form = styled.form`
-  width: 300px;
+  width: 18.75rem;
 `;
 
 export const InputWrapper = styled.div`
@@ -19,15 +19,15 @@ export const InputWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 24px;
-  gap: 7px;
+  margin-bottom: 1.5rem;
+  gap: 0.438rem;
 `;
 
 export const AuthWrapper = styled.div`
   display: flex;
   width: 100%;
   button {
-    width: 60px;
-    margin-left: 6px;
+    width: 3.75rem;
+    margin-left: 0.375rem;
   }
 `;

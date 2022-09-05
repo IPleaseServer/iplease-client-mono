@@ -38,7 +38,7 @@ export const Ul = styled.ul`
 export const List = styled.li<ListProps>`
   color: ${({ isHere }) => (isHere ? colors.pink : colors.black)};
   border-bottom: ${({ isHere }) =>
-    isHere ? `2px solid ${colors.pink}` : 'none'};
+    isHere ? `0.125rem solid ${colors.pink}` : 'none'};
   padding-top: 2rem;
   height: 100%;
 `;

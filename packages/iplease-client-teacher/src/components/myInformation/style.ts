@@ -17,12 +17,12 @@ export const PopoverButton = styled.button<PopoverButtonProps>`
 `;
 
 export const ContentWrapper = styled.article`
-  padding: 10px;
+  padding: 0.625rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: ${({ theme }) => theme.palette.borderRadius};
-  box-shadow: 0px 6px 12px rgba(51, 51, 51, 0.08);
+  box-shadow: 0px 0.375rem 0.75rem rgba(51, 51, 51, 0.08);
 `;
 
 export const Information = styled.div`
@@ -33,12 +33,12 @@ export const Information = styled.div`
 export const ProfileName = styled.h3`
   font-size: ${({ theme }) => theme.palette.fontSize.small};
   font-weight: ${({ theme }) => theme.palette.fontWeight.bold};
-  padding-left: 10px;
+  padding-left: 0.625rem;
 `;
 
 export const ProfileButton = styled.button`
   border: none;
-  padding: 15px 0;
+  padding: 0.938rem 0;
   background-color: ${({ theme }) => theme.palette.hue.white};
   font-size: ${({ theme }) => theme.palette.fontSize.small};
   color: ${({ theme }) => theme.palette.hue.pink};
@@ -47,7 +47,7 @@ export const ProfileButton = styled.button`
 `;
 
 export const Logout = styled(ProfileButton)`
-  border-top: 0.5px solid ${({ theme }) => theme.palette.hue.gray};
+  border-top: 1px solid ${({ theme }) => theme.palette.hue.gray};
   color: ${({ theme }) => theme.palette.hue.gray};
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
 `;

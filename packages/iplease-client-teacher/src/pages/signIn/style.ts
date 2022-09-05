@@ -7,11 +7,11 @@ export const Wrapper = styled.main`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  gap: 24px;
+  gap: 1.5rem;
 `;
 
 export const Form = styled.form`
-  width: 300px;
+  width: 18.75rem;
 `;
 
 export const InputWrapper = styled.div`
@@ -19,6 +19,6 @@ export const InputWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 24px;
-  gap: 7px;
+  margin-bottom: 1.5rem;
+  gap: 0.438rem;
 `;

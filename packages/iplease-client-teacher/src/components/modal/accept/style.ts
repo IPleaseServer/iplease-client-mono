@@ -5,7 +5,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Description = styled.p`
-  margin-top: 5px;
+  margin-top: 0.313rem;
   color: ${({ theme }) => theme.palette.hue.pink};
   font-size: ${({ theme }) => theme.palette.fontSize.extraSmall};
 `;

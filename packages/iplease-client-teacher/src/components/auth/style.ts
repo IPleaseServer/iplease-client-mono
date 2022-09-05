@@ -4,8 +4,8 @@ const AuthWrapper = styled.div`
   display: flex;
   width: 100%;
   button {
-    width: 60px;
-    margin-left: 6px;
+    width: 3.75rem;
+    margin-left: 0.375rem;
   }
 `;
 

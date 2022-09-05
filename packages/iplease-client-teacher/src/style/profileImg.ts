@@ -5,8 +5,8 @@ interface ProfileImgProps {
 }
 
 const ProfileImg = styled.img<ProfileImgProps>`
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
+  width: ${({ size }) => size / 16}rem;
+  height: ${({ size }) => size / 16}rem;
   border-radius: 50%;
 `;
 
