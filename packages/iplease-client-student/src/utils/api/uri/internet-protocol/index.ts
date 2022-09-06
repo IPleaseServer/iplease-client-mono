@@ -10,6 +10,10 @@ const ipApiUri = {
   queryDemandReleaseIp: (page: number, issuerId: number) =>
     `/demand/release/query/issuer?page=${page}&issuerId=${issuerId}`,
 
+  // 개인 할당 신청 ip 목록 조회
+  queryDemandAssignIp: (page: number, issuerId: number) =>
+    `/demand/assign/query/issuer?page=${page}&issuerId=${issuerId}`,
+
   // 개별 ip 예약 해제 조회
   queryReserveReleaseIp: (assignIpId: number) =>
     `/reserve/release/query/assign-ip?assignIpId=${assignIpId}`,
