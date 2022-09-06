@@ -26,6 +26,15 @@ export interface IDemandReleaseAssignIpInfo {
   status: DemandStatusType;
 }
 
+export interface IDemandAssignIpInfo {
+  id: number;
+  issuerId: number;
+  title: string;
+  description: string;
+  usage: AssignIpUsageType;
+  expireAt: number[];
+}
+
 export interface IAssignIpResponse {
   data: IAssignIpInfo;
 }
@@ -69,29 +78,60 @@ export interface IDemandReleaseAssignIpResponse {
     content: IDemandReleaseAssignIpInfo[];
     number: number;
     sort: {
-      empty: true;
-      sorted: true;
-      unsorted: true;
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
     };
-    first: true;
-    last: true;
+    first: boolean;
+    last: boolean;
     numberOfElements: number;
     pageable: {
       offset: number;
       sort: {
-        empty: true;
-        sorted: true;
-        unsorted: true;
+        empty: boolean;
+        sorted: boolean;
+        unsorted: boolean;
       };
       pageNumber: number;
       pageSize: number;
-      paged: true;
-      unpaged: true;
+      paged: boolean;
+      unpaged: boolean;
     };
-    empty: true;
+    empty: boolean;
   };
 }
 
 export interface IReleaseReserveAssignIpResponse {
   data: IReleaseReserveAssignIpInfo;
+}
+
+export interface IDemandAssignIpResponse {
+  data: {
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    content: IDemandAssignIpInfo[];
+    number: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    pageable: {
+      offset: number;
+      sort: {
+        empty: boolean;
+        sorted: boolean;
+        unsorted: boolean;
+      };
+      pageNumber: number;
+      pageSize: number;
+      unpaged: boolean;
+      paged: boolean;
+    };
+    numberOfElements: number;
+    first: boolean;
+    last: boolean;
+    empty: boolean;
+  };
 }
