@@ -17,6 +17,8 @@ const ipApiUri = {
   // 개별 ip 예약 해제 조회
   queryReserveReleaseIp: (assignIpId: number) =>
     `/reserve/release/query/assign-ip?assignIpId=${assignIpId}`,
+
+  queryDemandStatus: (demandId: number) => `/demand/status/query/${demandId}`,
 };
 
 export default ipApiUri;
