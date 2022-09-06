@@ -5,6 +5,7 @@ import { AxiosResponse } from 'axios';
 
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
+import { getValue } from '@common/utils/storage/storage';
 
 import { TableButton } from 'components/Common/TableButton';
 import {
@@ -18,7 +19,7 @@ import ipApiUri from 'utils/api/uri/internet-protocol';
 interface ITableData {
   id: number;
   ip: string;
-  releaseAt: number;
+  releaseAt: number[];
 }
 
 const AssignIpTable: React.FC = () => {
@@ -54,37 +55,44 @@ const AssignIpTable: React.FC = () => {
   `;
 
   const handleTableData = () => {
-    axiosClient.get(ipApiUri.queryAll(10)).then(
-      ({
-        data: {
-          data: { content },
-        },
-      }: AxiosResponse<IAssignIpResponse>) => {
-        if (content.length > 0) {
-          content.forEach((assignIpInfo: IAssignIpInfo) => {
-            axiosClient
-              .get(ipApiUri.queryReserveReleaseIp(assignIpInfo.id))
-              .then(
-                ({
-                  data: {
-                    data: { releaseAt },
-                  },
-                }: AxiosResponse<IReleaseReserveAssignIpResponse>) => {
-                  setTableData((prev: ITableData[]) => [
-                    ...prev,
-                    {
-                      id: assignIpInfo.id,
-                      ip: assignIpInfo.ip,
-                      releaseAt,
+    const accountId = getValue<number>('accountId');
+
+    if (accountId) {
+      axiosClient.get(ipApiUri.queryAssignIp(0, accountId)).then(
+        ({
+          data: {
+            data: { content },
+          },
+        }: AxiosResponse<IAssignIpResponse>) => {
+          if (content.length > 0) {
+            content.forEach((assignIpInfo: IAssignIpInfo) => {
+              axiosClient
+                .get(ipApiUri.queryReserveReleaseIp(assignIpInfo.id))
+                .then(
+                  ({
+                    data: {
+                      data: { releaseAt },
                     },
-                  ]);
-                }
-              );
-          });
+                  }: AxiosResponse<IReleaseReserveAssignIpResponse>) => {
+                    setTableData((prev: ITableData[]) => [
+                      ...prev,
+                      {
+                        id: assignIpInfo.id,
+                        ip: assignIpInfo.ip,
+                        releaseAt,
+                      },
+                    ]);
+                  }
+                );
+            });
+          }
         }
-      }
-    );
+      );
+    }
   };
+
+  const changeDateFormat = ([year, month, day]: number[]) =>
+    `${year}.${month < 10 ? `0${month}` : month}.${day}`;
 
   useEffect(() => {
     handleTableData();
@@ -103,7 +111,7 @@ const AssignIpTable: React.FC = () => {
           {tableData.map((assignIpInfo: ITableData) => (
             <tr key={assignIpInfo.id}>
               <td>{assignIpInfo.ip}</td>
-              <td>{assignIpInfo.releaseAt}</td>
+              <td>{changeDateFormat(assignIpInfo.releaseAt)}</td>
               <td>
                 <Button text="해제 신청" size="small" color="negative" />
               </td>
