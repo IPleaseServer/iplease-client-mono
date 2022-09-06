@@ -1,3 +1,9 @@
+import { PermissionType } from './account.type';
+
+export type AssignIpUsageType = 'USE_NETWORK' | 'DEPLOY_SERVER';
+
+export type DemandStatusType = 'CREATE' | 'CONFIRM' | 'REJECT' | 'ACCEPT';
+
 export interface IAssignIpInfo {
   id: number;
   ip: string;
@@ -12,7 +18,19 @@ export interface IReleaseReserveAssignIpInfo {
   releaseAt: number[];
 }
 
+export interface IDemandReleaseAssignIpInfo {
+  id: number;
+  assignIpId: number;
+  issuerId: number;
+  issuerPermission: PermissionType;
+  status: DemandStatusType;
+}
+
 export interface IAssignIpResponse {
+  data: IAssignIpInfo;
+}
+
+export interface IAssigneeAssignIpResponse {
   data: {
     totalPages: number;
     totalElements: number;
@@ -40,6 +58,37 @@ export interface IAssignIpResponse {
     first: boolean;
     last: boolean;
     empty: boolean;
+  };
+}
+
+export interface IDemandReleaseAssignIpResponse {
+  data: {
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    content: IDemandReleaseAssignIpInfo[];
+    number: number;
+    sort: {
+      empty: true;
+      sorted: true;
+      unsorted: true;
+    };
+    first: true;
+    last: true;
+    numberOfElements: number;
+    pageable: {
+      offset: number;
+      sort: {
+        empty: true;
+        sorted: true;
+        unsorted: true;
+      };
+      pageNumber: number;
+      pageSize: number;
+      paged: true;
+      unpaged: true;
+    };
+    empty: true;
   };
 }
 
