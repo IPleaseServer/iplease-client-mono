@@ -9,7 +9,7 @@ export interface IReleaseReserveAssignIpInfo {
   id: number;
   assignIpId: number;
   issuerId: number;
-  releaseAt: number;
+  releaseAt: number[];
 }
 
 export interface IAssignIpResponse {
