@@ -10,7 +10,7 @@ import { getValue } from '@common/utils/storage/storage';
 import { TableButton } from 'components/Common/TableButton';
 import {
   IAssignIpInfo,
-  IAssignIpResponse,
+  IAssigneeAssignIpResponse,
   IReleaseReserveAssignIpResponse,
 } from 'src/@types/internet-protocol.type';
 import axiosClient from 'utils/api/axios';
@@ -58,12 +58,12 @@ const AssignIpTable: React.FC = () => {
     const accountId = getValue<number>('accountId');
 
     if (accountId) {
-      axiosClient.get(ipApiUri.queryAssignIp(0, accountId)).then(
+      axiosClient.get(ipApiUri.queryAssigneeAssignIp(0, accountId)).then(
         ({
           data: {
             data: { content },
           },
-        }: AxiosResponse<IAssignIpResponse>) => {
+        }: AxiosResponse<IAssigneeAssignIpResponse>) => {
           if (content.length > 0) {
             content.forEach((assignIpInfo: IAssignIpInfo) => {
               axiosClient
