@@ -9,10 +9,11 @@ import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
 import { colors } from '@common/styles';
-import { setValue } from '@common/utils/storage/storage';
+import { getValue, setValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
 import { Link } from 'components/Common/Link';
+import { IProfileResponse } from 'src/@types/account.type';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
 
@@ -43,8 +44,8 @@ const SignInForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
-    axiosClient
+  const onSubmit: SubmitHandler<z.infer<typeof schema>> = async data => {
+    await axiosClient
       .post(accountApiUri.login(), {
         email: data.email + GSM_EMAIL_POSTFIX,
         password: data.password,
@@ -68,6 +69,28 @@ const SignInForm: React.FC = () => {
           toast.error(err.response.data.detail);
         }
       });
+
+    const token = getValue<string>('accessToken');
+
+    if (token) {
+      axiosClient
+        .get(accountApiUri.queryProfile(token))
+        .then((res: AxiosResponse<IProfileResponse>) => {
+          if (res.status === 200) {
+            setValue<number>('accountId', res.data.common.accountId, true);
+          }
+        })
+        .catch((err: AxiosError<{ detail: string }>) => {
+          if (!err.response) return;
+
+          if (err.response.status === 500) {
+            toast.error('서버 오류입니다. 잠시 후 다시 시도해주세요');
+          }
+          if (err.response.data.detail) {
+            toast.error(err.response.data.detail);
+          }
+        });
+    }
   };
 
   const style = css`
