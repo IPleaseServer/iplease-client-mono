@@ -1,11 +1,32 @@
+import { useEffect, useState } from 'react';
+
 import { css } from '@emotion/react';
+import { AxiosResponse } from 'axios';
 
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
+import { getValue } from '@common/utils/storage/storage';
 
 import { TableButton } from 'components/Common/TableButton';
+import {
+  DemandStatusType,
+  IDemandAssignIpInfo,
+  IDemandAssignIpResponse,
+  IDemandAssignIpStatusInfo,
+} from 'src/@types/internet-protocol.type';
+import axiosClient from 'utils/api/axios';
+import ipApiUri from 'utils/api/uri/internet-protocol';
+
+interface ITableData {
+  id: number;
+  title: string;
+  description: string;
+  status: DemandStatusType;
+}
 
 const AssignIpDemandTable: React.FC = () => {
+  const [tableData, setTableData] = useState<ITableData[]>([]);
+
   const subString = (str: string, n: number): string =>
     str?.length > n ? `${str.substring(0, n)}...` : str;
 
@@ -37,66 +58,81 @@ const AssignIpDemandTable: React.FC = () => {
     }
   `;
 
+  const handleTableData = () => {
+    const accountId = getValue<number>('accountId');
+
+    if (accountId) {
+      axiosClient.get(ipApiUri.queryDemandAssignIp(0, accountId)).then(
+        ({
+          data: {
+            data: { content },
+          },
+        }: AxiosResponse<IDemandAssignIpResponse>) => {
+          if (content.length > 0) {
+            content.forEach((demandAssignIpInfo: IDemandAssignIpInfo) => {
+              axiosClient
+                .get(ipApiUri.queryDemandStatus(demandAssignIpInfo.id))
+                .then(
+                  ({
+                    data: { status },
+                  }: AxiosResponse<IDemandAssignIpStatusInfo>) => {
+                    setTableData((prev: ITableData[]) => [
+                      ...prev,
+                      {
+                        id: demandAssignIpInfo.id,
+                        title: demandAssignIpInfo.title,
+                        description: demandAssignIpInfo.description,
+                        status,
+                      },
+                    ]);
+                  }
+                );
+            });
+          }
+        }
+      );
+    }
+  };
+
+  const translateStatus = (status: DemandStatusType): string => {
+    switch (status) {
+      case 'CREATE':
+        return '신청이 등록되었어요';
+      case 'ACCEPT':
+        return '신청이 승인되었어요';
+      case 'REJECT':
+        return '신청이 거절되었어요';
+      case 'CONFIRM':
+        return '관리자가 신청을 확인했어요';
+      default:
+        return '';
+    }
+  };
+
+  useEffect(() => {
+    handleTableData();
+  }, []);
+
   return (
     <div css={style}>
       <table>
-        <th>제목</th>
-        <th>설명</th>
-        <th>상태</th>
-        <tr>
-          <td>
-            {subString(
-              '안뇽하세요 저의 이름은 이선우라고 합니다 저이ㅡ 이름은 이선우라고합니다 저ㅡ이 이름은 이선우라고 합니다',
-              6
-            )}
-          </td>
-          <td>
-            {subString(
-              '어쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬',
-              20
-            )}
-          </td>
-          <td>검토 대기 중</td>
-          <td>
-            <Button text="신청 취소" size="small" color="negative" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {subString(
-              '안뇽하세요 저의 이름은 이선우라고 합니다 저이ㅡ 이름은 이선우라고합니다 저ㅡ이 이름은 이선우라고 합니다',
-              6
-            )}
-          </td>
-          <td>
-            {subString(
-              '어쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬',
-              20
-            )}
-          </td>
-          <td>검토 대기 중</td>
-          <td>
-            <Button text="신청 취소" size="small" color="negative" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {subString(
-              '안뇽하세요 저의 이름은 이선우라고 합니다 저이ㅡ 이름은 이선우라고합니다 저ㅡ이 이름은 이선우라고 합니다',
-              6
-            )}
-          </td>
-          <td>
-            {subString(
-              '어쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬 쿠쿠루삥뽕 쩔티비 저쩔티비 킹받쥬',
-              20
-            )}
-          </td>
-          <td>검토 대기 중</td>
-          <td>
-            <Button text="신청 취소" size="small" color="negative" />
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>제목</th>
+            <th>설명</th>
+            <th>상태</th>
+          </tr>
+        </thead>
+        {tableData.map((data: ITableData) => (
+          <tr>
+            <td>{subString(data.title, 6)}</td>
+            <td>{subString(data.description, 20)}</td>
+            <td>{translateStatus(data.status)}</td>
+            <td>
+              <Button text="신청 취소" size="small" color="negative" />
+            </td>
+          </tr>
+        ))}
       </table>
       <TableButton>IP 할당 신청하기</TableButton>
     </div>
