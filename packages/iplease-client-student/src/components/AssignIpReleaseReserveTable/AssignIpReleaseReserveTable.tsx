@@ -49,6 +49,11 @@ const AssignIpReleaseReserveTable: React.FC = () => {
         }
       }
     }
+    p {
+      font-size: ${theme.palette.fontSize.extraSmall};
+      color: ${colors.black};
+      font-weight: ${theme.palette.fontWeight.semiBold};
+    }
   `;
 
   const handleTableData = () => {
@@ -100,23 +105,26 @@ const AssignIpReleaseReserveTable: React.FC = () => {
 
   return (
     <div css={style}>
-      <table>
-        <thead>
-          <tr>
-            <th>IP 주소</th>
-            <th>예약일</th>
-          </tr>
-        </thead>
-        {tableData.map((data: ITableData) => (
-          <tr>
-            <td>{data.ip}</td>
-            <td>2020.04.07</td>
-            <td>
-              <Button text="예약 취소" size="small" color="negative" />
-            </td>
-          </tr>
-        ))}
-      </table>
+      {tableData.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>IP 주소</th>
+              <th>예약일</th>
+            </tr>
+          </thead>
+          {tableData.map((data: ITableData) => (
+            <tr>
+              <td>{data.ip}</td>
+              <td>2020.04.07</td>
+              <td>
+                <Button text="예약 취소" size="small" color="negative" />
+              </td>
+            </tr>
+          ))}
+        </table>
+      )}
+      {tableData.length === 0 && <p>할당 해제 예약된 IP가 존재하지 않아요</p>}
     </div>
   );
 };
