@@ -35,6 +35,12 @@ export interface IDemandAssignIpInfo {
   expireAt: number[];
 }
 
+export interface IDemandAssignIpStatusInfo {
+  id: number;
+  demandId: number;
+  status: DemandStatusType;
+}
+
 export interface IAssignIpResponse {
   data: IAssignIpInfo;
 }
