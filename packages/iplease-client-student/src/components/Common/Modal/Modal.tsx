@@ -8,7 +8,7 @@ interface ModalProps {
   children?: ReactNode;
 }
 
-const Modal = ({ children }: ModalProps) => {
+const Modal: React.FC<ModalProps> = ({ children }) => {
   const el = useRef(document.createElement('div'));
 
   useEffect(() => {
