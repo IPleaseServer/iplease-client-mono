@@ -18,6 +18,10 @@ const ipApiUri = {
   queryReserveReleaseIp: (assignIpId: number) =>
     `/reserve/release/query/assign-ip?assignIpId=${assignIpId}`,
 
+  // 개인 ip 예약 해제 목록 조회
+  queryReserveReleaseIssuerIp: (page: number, issuerId: number) =>
+    `/reserve/release/query/issuer?page=${page}&issuerId=${issuerId}`,
+
   queryDemandStatus: (demandId: number) => `/demand/status/query/${demandId}`,
 };
 
