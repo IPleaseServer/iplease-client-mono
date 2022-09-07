@@ -1,9 +1,29 @@
+import { useEffect, useState } from 'react';
+
 import { css } from '@emotion/react';
+import { AxiosResponse } from 'axios';
 
 import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
+import { getValue } from '@common/utils/storage/storage';
+
+import {
+  IAssignIpResponse,
+  IReleaseReserveAssignIpInfo,
+  IReleaseReserveIssuerAssignIpResponse,
+} from 'src/@types/internet-protocol.type';
+import axiosClient from 'utils/api/axios';
+import ipApiUri from 'utils/api/uri/internet-protocol';
+
+interface ITableData {
+  id: number;
+  ip: string;
+  releaseAt: number[];
+}
 
 const AssignIpReleaseReserveTable: React.FC = () => {
+  const [tableData, setTableData] = useState<ITableData[]>([]);
+
   const style = css`
     width: fit-content;
     padding: 1.25rem 1.875rem;
@@ -31,25 +51,71 @@ const AssignIpReleaseReserveTable: React.FC = () => {
     }
   `;
 
+  const handleTableData = () => {
+    const accountId = getValue<number>('accountId');
+
+    if (accountId) {
+      axiosClient.get(ipApiUri.queryReserveReleaseIssuerIp(0, accountId)).then(
+        ({
+          data: {
+            data: { content },
+          },
+        }: AxiosResponse<IReleaseReserveIssuerAssignIpResponse>) => {
+          if (content.length > 0) {
+            content.forEach(
+              (
+                releaseReserveIssuerAssignIpInfo: IReleaseReserveAssignIpInfo
+              ) => {
+                axiosClient
+                  .get(
+                    ipApiUri.queryAssignIp(releaseReserveIssuerAssignIpInfo.id)
+                  )
+                  .then(
+                    ({
+                      data: {
+                        data: { ip },
+                      },
+                    }: AxiosResponse<IAssignIpResponse>) => {
+                      setTableData((prev: ITableData[]) => [
+                        ...prev,
+                        {
+                          id: releaseReserveIssuerAssignIpInfo.id,
+                          ip,
+                          releaseAt: releaseReserveIssuerAssignIpInfo.releaseAt,
+                        },
+                      ]);
+                    }
+                  );
+              }
+            );
+          }
+        }
+      );
+    }
+  };
+
+  useEffect(() => {
+    handleTableData();
+  }, []);
+
   return (
     <div css={style}>
       <table>
-        <th>IP 주소</th>
-        <th>예약일</th>
-        <tr>
-          <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.07</td>
-          <td>
-            <Button text="예약 취소" size="small" color="negative" />
-          </td>
-        </tr>
-        <tr>
-          <td>xxx.xxx.xxx.xxx</td>
-          <td>2020.04.07</td>
-          <td>
-            <Button text="예약 취소" size="small" color="negative" />
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            <th>IP 주소</th>
+            <th>예약일</th>
+          </tr>
+        </thead>
+        {tableData.map((data: ITableData) => (
+          <tr>
+            <td>{data.ip}</td>
+            <td>2020.04.07</td>
+            <td>
+              <Button text="예약 취소" size="small" color="negative" />
+            </td>
+          </tr>
+        ))}
       </table>
     </div>
   );
