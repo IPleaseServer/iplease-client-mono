@@ -111,6 +111,37 @@ export interface IReleaseReserveAssignIpResponse {
   data: IReleaseReserveAssignIpInfo;
 }
 
+export interface IReleaseReserveIssuerAssignIpResponse {
+  data: {
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    content: IReleaseReserveAssignIpInfo[];
+    number: number;
+    sort: {
+      empty: boolean;
+      sorted: boolean;
+      unsorted: boolean;
+    };
+    first: boolean;
+    last: boolean;
+    numberOfElements: number;
+    pageable: {
+      offset: number;
+      sort: {
+        empty: boolean;
+        sorted: boolean;
+        unsorted: boolean;
+      };
+      pageNumber: number;
+      pageSize: number;
+      paged: boolean;
+      unpaged: boolean;
+    };
+    empty: boolean;
+  };
+}
+
 export interface IDemandAssignIpResponse {
   data: {
     totalPages: number;
