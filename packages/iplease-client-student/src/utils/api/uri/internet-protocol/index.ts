@@ -23,6 +23,9 @@ const ipApiUri = {
     `/reserve/release/query/issuer?page=${page}&issuerId=${issuerId}`,
 
   queryDemandStatus: (demandId: number) => `/demand/status/query/${demandId}`,
+
+  // ip 할당 신청
+  demandAssignIp: () => `/demand/assign/command`,
 };
 
 export default ipApiUri;
