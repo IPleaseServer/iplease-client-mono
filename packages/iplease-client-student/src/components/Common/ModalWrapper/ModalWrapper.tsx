@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import { colors, theme } from '@common/styles';
+
 interface ModalWrapperProps {
   children: React.ReactNode;
 }
@@ -14,9 +16,18 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({ children }) => {
     transform: translate(-50%, -50%);
     z-index: 99;
     background: #0000007c;
+    .inner-wrapper {
+      background-color: ${colors.white};
+      border-radius: ${theme.palette.borderRadius};
+      padding: 1.875rem;
+    }
   `;
 
-  return <div css={style}>{children}</div>;
+  return (
+    <div css={style}>
+      <div className="inner-wrapper">{children}</div>
+    </div>
+  );
 };
 
 export default ModalWrapper;
