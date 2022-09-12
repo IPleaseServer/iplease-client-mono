@@ -53,6 +53,10 @@ const AssignIpDemandTable: React.FC = () => {
             font-weight: ${theme.palette.fontWeight.regular};
             font-size: ${theme.palette.fontSize.extraSmall};
           }
+          .description-button {
+            text-decoration: underline;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -126,7 +130,11 @@ const AssignIpDemandTable: React.FC = () => {
         {tableData.map((data: ITableData) => (
           <tr>
             <td>{subString(data.title, 6)}</td>
-            <td>{subString(data.description, 20)}</td>
+            <td>
+              <div className="description-button">
+                {subString(data.description, 20)}
+              </div>
+            </td>
             <td>{translateStatus(data.status)}</td>
             <td>
               <Button text="신청 취소" size="small" color="negative" />
