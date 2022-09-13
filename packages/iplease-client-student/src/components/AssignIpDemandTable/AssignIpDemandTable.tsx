@@ -11,6 +11,7 @@ import { Modal } from 'components/Common/Modal';
 import { ModalWrapper } from 'components/Common/ModalWrapper';
 import { TableButton } from 'components/Common/TableButton';
 import { IpDemandForm } from 'components/IpDemandForm';
+import { ReadMore } from 'components/ReadMore';
 import {
   DemandStatusType,
   IDemandAssignIpInfo,
@@ -27,12 +28,86 @@ interface ITableData {
   status: DemandStatusType;
 }
 
-const AssignIpDemandTable: React.FC = () => {
-  const [wantAssignIp, setWantAssignIp] = useState<boolean>(false);
-  const [tableData, setTableData] = useState<ITableData[]>([]);
+const AssignIpDemandTableRow: React.FC<ITableData> = ({
+  id,
+  title,
+  description,
+  status,
+}) => {
+  const [wantReadMore, setWantReadMore] = useState<boolean>(false);
+
+  const style = css`
+    td {
+      color: ${colors.black};
+      padding: 0.3125rem 0;
+      :not(:last-child) {
+        padding-right: 2.5rem;
+        font-weight: ${theme.palette.fontWeight.regular};
+        font-size: ${theme.palette.fontSize.extraSmall};
+      }
+      .description-button {
+        text-decoration: underline;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-weight: ${theme.palette.fontWeight.regular};
+        font-size: ${theme.palette.fontSize.extraSmall};
+        color: ${colors.black};
+      }
+    }
+  `;
 
   const subString = (str: string, n: number): string =>
     str?.length > n ? `${str.substring(0, n)}...` : str;
+
+  const translateStatus = (demandStatus: DemandStatusType): string => {
+    switch (demandStatus) {
+      case 'CREATE':
+        return '신청이 등록되었어요';
+      case 'ACCEPT':
+        return '신청이 승인되었어요';
+      case 'REJECT':
+        return '신청이 거절되었어요';
+      case 'CONFIRM':
+        return '관리자가 신청을 확인했어요';
+      default:
+        return '';
+    }
+  };
+
+  return (
+    <>
+      <tr css={style}>
+        <td>{subString(title, 6)}</td>
+        <td>
+          <button
+            type="button"
+            className="description-button"
+            onClick={() => setWantReadMore(true)}
+          >
+            {subString(description, 20)}
+          </button>
+        </td>
+        <td>{translateStatus(status)}</td>
+        <td>
+          <Button text="신청 취소" size="small" color="negative" />
+        </td>
+      </tr>
+      {wantReadMore && (
+        <Modal>
+          <ModalWrapper setModalVisible={setWantReadMore}>
+            <ReadMore title={title} description={description} />
+          </ModalWrapper>
+        </Modal>
+      )}
+    </>
+  );
+};
+
+const AssignIpDemandTable: React.FC = () => {
+  const [wantAssignIp, setWantAssignIp] = useState<boolean>(false);
+  const [tableData, setTableData] = useState<ITableData[]>([]);
 
   const style = css`
     width: fit-content;
@@ -47,21 +122,6 @@ const AssignIpDemandTable: React.FC = () => {
         font-size: ${theme.palette.fontSize.small};
         color: ${colors.black};
         padding-bottom: 0.625rem;
-      }
-      tr {
-        td {
-          color: ${colors.black};
-          padding: 0.3125rem 0;
-          :not(:last-child) {
-            padding-right: 2.5rem;
-            font-weight: ${theme.palette.fontWeight.regular};
-            font-size: ${theme.palette.fontSize.extraSmall};
-          }
-          .description-button {
-            text-decoration: underline;
-            cursor: pointer;
-          }
-        }
       }
     }
   `;
@@ -102,21 +162,6 @@ const AssignIpDemandTable: React.FC = () => {
     }
   };
 
-  const translateStatus = (status: DemandStatusType): string => {
-    switch (status) {
-      case 'CREATE':
-        return '신청이 등록되었어요';
-      case 'ACCEPT':
-        return '신청이 승인되었어요';
-      case 'REJECT':
-        return '신청이 거절되었어요';
-      case 'CONFIRM':
-        return '관리자가 신청을 확인했어요';
-      default:
-        return '';
-    }
-  };
-
   useEffect(() => {
     handleTableData();
   }, []);
@@ -134,18 +179,13 @@ const AssignIpDemandTable: React.FC = () => {
               </tr>
             </thead>
             {tableData.map((data: ITableData) => (
-              <tr>
-                <td>{subString(data.title, 6)}</td>
-                <td>
-                  <div className="description-button">
-                    {subString(data.description, 20)}
-                  </div>
-                </td>
-                <td>{translateStatus(data.status)}</td>
-                <td>
-                  <Button text="신청 취소" size="small" color="negative" />
-                </td>
-              </tr>
+              <AssignIpDemandTableRow
+                key={data.id}
+                id={data.id}
+                title={data.title}
+                description={data.description}
+                status={data.status}
+              />
             ))}
           </table>
         )}
