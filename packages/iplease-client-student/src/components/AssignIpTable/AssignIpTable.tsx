@@ -7,7 +7,10 @@ import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
 import { getValue } from '@common/utils/storage/storage';
 
+import { Modal } from 'components/Common/Modal';
+import { ModalWrapper } from 'components/Common/ModalWrapper';
 import { TableButton } from 'components/Common/TableButton';
+import { IpDemandForm } from 'components/IpDemandForm';
 import {
   IAssignIpInfo,
   IAssigneeAssignIpResponse,
@@ -23,6 +26,7 @@ interface ITableData {
 }
 
 const AssignIpTable: React.FC = () => {
+  const [wantAssignIp, setWantAssignIp] = useState<boolean>(false);
   const [tableData, setTableData] = useState<ITableData[]>([]);
 
   const style = css`
@@ -99,28 +103,39 @@ const AssignIpTable: React.FC = () => {
   }, []);
 
   return (
-    <div css={style}>
-      {tableData.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              <th>IP 주소</th>
-              <th>종료일</th>
-            </tr>
-          </thead>
-          {tableData.map((assignIpInfo: ITableData) => (
-            <tr key={assignIpInfo.id}>
-              <td>{assignIpInfo.ip}</td>
-              <td>{changeDateFormat(assignIpInfo.releaseAt)}</td>
-              <td>
-                <Button text="해제 신청" size="small" color="negative" />
-              </td>
-            </tr>
-          ))}
-        </table>
+    <>
+      <div css={style}>
+        {tableData.length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                <th>IP 주소</th>
+                <th>종료일</th>
+              </tr>
+            </thead>
+            {tableData.map((assignIpInfo: ITableData) => (
+              <tr key={assignIpInfo.id}>
+                <td>{assignIpInfo.ip}</td>
+                <td>{changeDateFormat(assignIpInfo.releaseAt)}</td>
+                <td>
+                  <Button text="해제 신청" size="small" color="negative" />
+                </td>
+              </tr>
+            ))}
+          </table>
+        )}
+        <TableButton onClick={() => setWantAssignIp(true)}>
+          IP 신청하기
+        </TableButton>
+      </div>
+      {wantAssignIp && (
+        <Modal>
+          <ModalWrapper setModalVisible={setWantAssignIp}>
+            <IpDemandForm />
+          </ModalWrapper>
+        </Modal>
       )}
-      <TableButton>IP 신청하기</TableButton>
-    </div>
+    </>
   );
 };
 
