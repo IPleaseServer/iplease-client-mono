@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { ErrorMessage } from '@hookform/error-message';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosResponse } from 'axios';
-import dayjs from 'dayjs';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { z } from 'zod';
@@ -102,11 +101,7 @@ const IpDemandForm: React.FC = () => {
         <ErrorMessage errors={errors} name="title" as="p" />
         <Input {...register('description')} placeholder="신청 이유" />
         <ErrorMessage errors={errors} name="description" as="p" />
-        <Input
-          {...register('expireAt')}
-          type="date"
-          value={dayjs().format('YYYY-MM-DD')}
-        />
+        <Input {...register('expireAt')} type="date" />
         <ErrorMessage errors={errors} name="expireAt" as="p" />
         <select {...register('usage')}>
           <option value={IP_USAGE.교내네트워크이용}>교내 네트워크 이용</option>
