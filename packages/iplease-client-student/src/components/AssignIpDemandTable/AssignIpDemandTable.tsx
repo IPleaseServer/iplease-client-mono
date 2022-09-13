@@ -7,7 +7,10 @@ import { Button } from '@common/components';
 import { colors, theme } from '@common/styles';
 import { getValue } from '@common/utils/storage/storage';
 
+import { Modal } from 'components/Common/Modal';
+import { ModalWrapper } from 'components/Common/ModalWrapper';
 import { TableButton } from 'components/Common/TableButton';
+import { IpDemandForm } from 'components/IpDemandForm';
 import {
   DemandStatusType,
   IDemandAssignIpInfo,
@@ -25,6 +28,7 @@ interface ITableData {
 }
 
 const AssignIpDemandTable: React.FC = () => {
+  const [wantAssignIp, setWantAssignIp] = useState<boolean>(false);
   const [tableData, setTableData] = useState<ITableData[]>([]);
 
   const subString = (str: string, n: number): string =>
@@ -118,32 +122,45 @@ const AssignIpDemandTable: React.FC = () => {
   }, []);
 
   return (
-    <div css={style}>
-      <table>
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>설명</th>
-            <th>상태</th>
-          </tr>
-        </thead>
-        {tableData.map((data: ITableData) => (
-          <tr>
-            <td>{subString(data.title, 6)}</td>
-            <td>
-              <div className="description-button">
-                {subString(data.description, 20)}
-              </div>
-            </td>
-            <td>{translateStatus(data.status)}</td>
-            <td>
-              <Button text="신청 취소" size="small" color="negative" />
-            </td>
-          </tr>
-        ))}
-      </table>
-      <TableButton>IP 할당 신청하기</TableButton>
-    </div>
+    <>
+      <div css={style}>
+        {tableData.length > 0 && (
+          <table>
+            <thead>
+              <tr>
+                <th>제목</th>
+                <th>설명</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            {tableData.map((data: ITableData) => (
+              <tr>
+                <td>{subString(data.title, 6)}</td>
+                <td>
+                  <div className="description-button">
+                    {subString(data.description, 20)}
+                  </div>
+                </td>
+                <td>{translateStatus(data.status)}</td>
+                <td>
+                  <Button text="신청 취소" size="small" color="negative" />
+                </td>
+              </tr>
+            ))}
+          </table>
+        )}
+        <TableButton onClick={() => setWantAssignIp(true)}>
+          IP 신청하기
+        </TableButton>
+      </div>
+      {wantAssignIp && (
+        <Modal>
+          <ModalWrapper setModalVisible={setWantAssignIp}>
+            <IpDemandForm />
+          </ModalWrapper>
+        </Modal>
+      )}
+    </>
   );
 };
 
