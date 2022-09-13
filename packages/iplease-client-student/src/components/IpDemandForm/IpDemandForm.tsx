@@ -22,7 +22,7 @@ const IpDemandForm: React.FC = () => {
     title: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
     description: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
     usage: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
-    expireAt: z.string().nonempty({ message: '빈값이 들어갈 수 없어요' }),
+    expireAt: z.string().nonempty({ message: 'IP 사용 종료일을 입력해주세요' }),
   });
 
   const {
@@ -68,7 +68,6 @@ const IpDemandForm: React.FC = () => {
       p {
         color: ${colors.pink};
         font-size: ${theme.palette.fontSize.extraSmall};
-        margin-top: 0.35rem;
       }
       p::before {
         display: inline;
@@ -101,13 +100,13 @@ const IpDemandForm: React.FC = () => {
         <ErrorMessage errors={errors} name="title" as="p" />
         <Input {...register('description')} placeholder="신청 이유" />
         <ErrorMessage errors={errors} name="description" as="p" />
-        <Input {...register('expireAt')} type="date" />
-        <ErrorMessage errors={errors} name="expireAt" as="p" />
         <select {...register('usage')}>
           <option value={IP_USAGE.교내네트워크이용}>교내 네트워크 이용</option>
           <option value={IP_USAGE.서버배포}>서버 배포</option>
         </select>
         <ErrorMessage errors={errors} name="usage" as="p" />
+        <Input {...register('expireAt')} type="date" />
+        <ErrorMessage errors={errors} name="expireAt" as="p" />
         <Button type="submit" text="신청" size="big" />
       </form>
     </div>
