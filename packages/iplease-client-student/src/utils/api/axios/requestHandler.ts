@@ -26,7 +26,7 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           setValue<string>('accessToken', res.data.accessToken, true);
           setValue<string>(
             'expiresAt',
-            dayjs().add(1, 'hour').format('yyyy-MM-DD HH:mm:ss'),
+            dayjs().add(1, 'hour').format('YYYY-MM-DD HH:mm:ss'),
             true
           );
         }
