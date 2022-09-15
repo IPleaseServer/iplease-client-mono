@@ -15,7 +15,7 @@ import { colors } from '@common/styles';
 
 export interface InputProps {
   className?: string;
-  type?: 'text' | 'number' | 'file' | 'password' | 'hidden';
+  type?: 'text' | 'number' | 'file' | 'password' | 'hidden' | 'date';
   name?: string;
   placeholder?: string;
   prefix?: string;

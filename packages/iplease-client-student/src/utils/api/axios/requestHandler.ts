@@ -5,7 +5,7 @@ import { getValue, removeValue, setValue } from '@common/utils/storage/storage';
 
 import accountApiUri from '../uri/account';
 
-const BASE_URL = 'https://644e-221-156-195-73.jp.ngrok.io';
+const BASE_URL = 'https://api.iplease.shop';
 const URL_POSTFIX = '/api/v1';
 
 const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
@@ -26,7 +26,7 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           setValue<string>('accessToken', res.data.accessToken, true);
           setValue<string>(
             'expiresAt',
-            dayjs().add(1, 'hour').format('yyyy-MM-DD HH:mm:ss'),
+            dayjs().add(1, 'hour').format('YYYY-MM-DD HH:mm:ss'),
             true
           );
         }

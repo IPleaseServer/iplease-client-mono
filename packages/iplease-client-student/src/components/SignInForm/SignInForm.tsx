@@ -4,14 +4,16 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosResponse } from 'axios';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import { Button, Input } from '@common/components';
 import { colors } from '@common/styles';
-import { setValue } from '@common/utils/storage/storage';
+import { getValue, setValue } from '@common/utils/storage/storage';
 
 import Logo from 'assets/Logo';
 import { Link } from 'components/Common/Link';
+import { IProfileResponse } from 'src/@types/account.type';
 import axiosClient from 'utils/api/axios';
 import accountApiUri from 'utils/api/uri/account';
 
@@ -22,6 +24,7 @@ const GSM_STUDENT_EMAIL_PREFIX_REGEX = /^s\d{5}$/g;
 
 const SignInForm: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const schema = z.object({
     email: z
@@ -41,8 +44,8 @@ const SignInForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof schema>> = data => {
-    axiosClient
+  const onSubmit: SubmitHandler<z.infer<typeof schema>> = async data => {
+    await axiosClient
       .post(accountApiUri.login(), {
         email: data.email + GSM_EMAIL_POSTFIX,
         password: data.password,
@@ -50,8 +53,9 @@ const SignInForm: React.FC = () => {
       .then(
         (res: AxiosResponse<{ accessToken: string; refreshToken: string }>) => {
           if (res.status === 200) {
-            setValue('accessToken', res.data.accessToken, true);
-            setValue('refreshToken', res.data.refreshToken, true);
+            setValue<string>('accessToken', res.data.accessToken, true);
+            setValue<string>('refreshToken', res.data.refreshToken, true);
+            navigate('/home');
           }
         }
       )
@@ -65,6 +69,28 @@ const SignInForm: React.FC = () => {
           toast.error(err.response.data.detail);
         }
       });
+
+    const token = getValue<string>('accessToken');
+
+    if (token) {
+      axiosClient
+        .get(accountApiUri.queryProfile(token))
+        .then((res: AxiosResponse<IProfileResponse>) => {
+          if (res.status === 200) {
+            setValue<number>('accountId', res.data.common.accountId, true);
+          }
+        })
+        .catch((err: AxiosError<{ detail: string }>) => {
+          if (!err.response) return;
+
+          if (err.response.status === 500) {
+            toast.error('서버 오류입니다. 잠시 후 다시 시도해주세요');
+          }
+          if (err.response.data.detail) {
+            toast.error(err.response.data.detail);
+          }
+        });
+    }
   };
 
   const style = css`
@@ -120,13 +146,13 @@ const SignInForm: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Input
             {...register('email')}
-            placeholder="email"
+            placeholder="이메일"
             postfix={GSM_EMAIL_POSTFIX}
           />
           <ErrorMessage errors={errors} name="email" as="p" />
           <Input
             {...register('password')}
-            placeholder="password"
+            placeholder="비밀번호"
             type="password"
           />
           <ErrorMessage errors={errors} name="password" as="p" />

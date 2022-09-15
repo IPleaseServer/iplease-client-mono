@@ -6,9 +6,10 @@ import RightArrow from 'assets/RightArrow';
 
 interface TableButtonProps {
   children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const TableButton: React.FC<TableButtonProps> = ({ children }) => {
+const TableButton: React.FC<TableButtonProps> = ({ children, onClick }) => {
   const style = css`
     display: grid;
     place-items: center;
@@ -29,7 +30,7 @@ const TableButton: React.FC<TableButtonProps> = ({ children }) => {
 
   return (
     <div css={style}>
-      <button type="button" onClick={() => console.log('a')}>
+      <button type="button" onClick={onClick}>
         {children}
         <RightArrow />
       </button>
