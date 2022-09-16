@@ -3,11 +3,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
-const tsConfigPath = path.resolve(__dirname, './tsconfig.json');
+const tsConfigPath = path.resolve(__dirname, '../tsconfig.json');
 
 module.exports = {
   entry: './src/index.tsx',
-  mode: 'development',
   module: {
     rules: [
       {
@@ -60,10 +59,4 @@ module.exports = {
       hash: true,
     }),
   ],
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    port: 3000,
-  },
 };
