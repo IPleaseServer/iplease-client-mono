@@ -41,14 +41,6 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           global.location.replace(`/#${URL.signIn}`);
         }, 1000);
       });
-  } else if (!dayjs().isBefore(expireAt) || !refreshToken) {
-    toast.error('다시 로그인해주세요.');
-    removeValue('accessToken', true);
-    removeValue('refreshToken', true);
-    removeValue('expiresAt', true);
-    setTimeout(() => {
-      global.location.replace(`/#${URL.signIn}`);
-    }, 1000);
   }
   if (config && config.headers && token) {
     // eslint-disable-next-line no-param-reassign
