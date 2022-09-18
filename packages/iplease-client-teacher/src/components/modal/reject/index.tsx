@@ -55,6 +55,7 @@ function Reject({ children, id }: RejectProps): JSX.Element {
       return;
     }
     mutate({ demandId: id, reason: currentReason });
+    closeModal();
   }
 
   return (

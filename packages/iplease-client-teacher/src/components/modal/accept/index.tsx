@@ -51,6 +51,7 @@ function Accept({ children, id }: AcceptProps): JSX.Element {
   function onClick() {
     if (IP) {
       mutate({ demandId: id, assignIp: IP });
+      closeModal();
     }
   }
 
