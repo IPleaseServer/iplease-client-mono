@@ -38,7 +38,6 @@ function App() {
         refetchOnMount: false,
         refetchOnReconnect: false,
         retry: false,
-        staleTime: 60 * 1000,
       },
     },
   });
