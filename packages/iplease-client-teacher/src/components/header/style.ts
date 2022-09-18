@@ -7,7 +7,6 @@ interface ListProps {
 }
 
 export const HeaderWrapper = styled.header`
-  width: 100vw;
   display: flex;
   justify-content: center;
   svg {
