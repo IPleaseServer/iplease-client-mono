@@ -41,6 +41,8 @@ const refresh = (config: AxiosRequestConfig): AxiosRequestConfig => {
           global.location.replace(`/#${URL.signIn}`);
         }, 1000);
       });
+  } else {
+    global.location.replace(`/#${URL.signIn}`);
   }
   if (config && config.headers && token) {
     // eslint-disable-next-line no-param-reassign
