@@ -113,6 +113,9 @@ module.exports = {
             project: path.resolve(
               `${__dirname}/packages/common-components/tsconfig.json`
             ),
+            'iplease-client-teacher': path.resolve(
+              `${__dirname}/packages/iplease-client-teacher/tsconfig.json`
+            ),
           },
         },
       },
@@ -142,6 +145,21 @@ module.exports = {
           typescript: {
             project: path.resolve(
               `${__dirname}/packages/common-utils/tsconfig.json`
+            ),
+          },
+        },
+      },
+    },
+    {
+      files: [
+        'packages/iplease-client-teacher/**/*.ts?(x)',
+        'packages/iplease-client-teacher/**/*.js?(x)',
+      ],
+      settings: {
+        'import/resolver': {
+          typescript: {
+            project: path.resolve(
+              `${__dirname}/packages/iplease-client-teacher/tsconfig.json`
             ),
           },
         },

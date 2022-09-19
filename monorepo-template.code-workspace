@@ -7,6 +7,9 @@
       "path": "packages/common-styles"
     },
     {
+      "path": "packages/iplease-client-teacher"
+    },
+    {
       "path": "packages/iplease-client-student"
     }
   ],

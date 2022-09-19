@@ -11,6 +11,7 @@
     "common-styles": "yarn workspace @common/styles",
     "common-utils": "yarn workspace @common/utils",
     "iplease-client-student": "yarn workspace iplease-client-student",
+    "iplease-client-teacher": "yarn workspace iplease-client-teacher",
     "postinstall": "husky install",
     "test:all": "yarn workspaces foreach --parallel --include @common/components --include @common/utils run test",
     "e2e:headless": "yarn playwright test",
@@ -51,6 +52,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.8",
     "@types/core-js": "^2.5.5",
+    "@types/html-webpack-plugin": "^3.2.6",
     "core-js": "^3.23.2"
   }
 }
