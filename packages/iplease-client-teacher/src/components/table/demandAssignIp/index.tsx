@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useQuery } from 'react-query';
 
@@ -61,22 +61,46 @@ function Content({ data }: ContentProps): JSX.Element {
 }
 
 function DemandAssignIpTable(): JSX.Element {
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState<number>(0);
   const { data, isLoading, isError } = useQuery<PageDemandAssignIp>(
     'getDemandAssignIp',
     () => getDemandAssignIp(pageNumber)
   );
+  const [filterContent, setFilterContent] = useState<DemandAssignIp[]>();
+
+  // The helper function
+  async function filter<T>(
+    arr: T[],
+    callback: (item: T) => Promise<boolean>
+  ): Promise<(Awaited<T> | null)[]> {
+    return (
+      await Promise.all(
+        arr.map(async (item: T) => ((await callback(item)) ? item : null))
+      )
+    ).filter(i => i !== null);
+  }
+
+  useEffect(() => {
+    if (data?.content)
+      (async function () {
+        const results = await filter<DemandAssignIp>(
+          data.content,
+          async ipData => {
+            const status = await acceptDemandAssignIpStatus(ipData.id);
+            return status === 'CREATE' || status === 'CONFIRM';
+          }
+        );
+        if (results) setFilterContent(results);
+      })();
+  }, [data]);
 
   if (isLoading) return <>loading</>;
 
   if (isError || !data) return <>error</>;
 
-  const { content, first, last, totalPages } = data;
+  if (!filterContent) return <>데이터가 없어요</>;
 
-  const filterContent = content.filter(async ipData => {
-    const res = await acceptDemandAssignIpStatus(ipData.id);
-    return res === 'CREATE' || 'CONFIRM';
-  });
+  const { first, last, totalPages } = data;
 
   return (
     <Table title="IP 할당 신청 목록">
