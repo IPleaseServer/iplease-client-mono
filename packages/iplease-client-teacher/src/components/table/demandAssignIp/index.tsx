@@ -85,8 +85,10 @@ function DemandAssignIpTable(): JSX.Element {
       (async function () {
         const results = await filter<DemandAssignIp>(
           data.content,
-          async ipData =>
-            (await acceptDemandAssignIpStatus(ipData.id)) === 'CREATE'
+          async ipData => {
+            const status = await acceptDemandAssignIpStatus(ipData.id);
+            return status === 'CREATE' || status === 'CONFIRM';
+          }
         );
         if (results) setFilterContent(results);
       })();
