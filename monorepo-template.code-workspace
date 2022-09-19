@@ -7,11 +7,11 @@
       "path": "packages/common-styles"
     },
     {
-      "path": "packages/prototype-a"
+      "path": "packages/iplease-client-teacher"
     },
     {
-      "path": "packages/prototype-b"
-    },
+      "path": "packages/iplease-client-student"
+    }
   ],
   "settings": {
     "search.exclude": {

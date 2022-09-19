@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@emotion/react';
+import { css, Global, ThemeProvider } from '@emotion/react';
 import { DecoratorFn } from '@storybook/react';
 
 import { theme } from '@common/styles';
@@ -6,6 +6,19 @@ import { theme } from '@common/styles';
 export const decorators: DecoratorFn[] = [
   Story => (
     <ThemeProvider theme={theme}>
+      <Global
+        styles={css`
+          @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+          body {
+            font-family: Pretendard, -apple-system, BlinkMacSystemFont,
+              system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+              'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
+              'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+              sans-serif;
+          }
+        `}
+      />
       <Story />
     </ThemeProvider>
   ),
