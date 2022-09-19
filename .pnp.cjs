@@ -21673,7 +21673,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["web-vitals", "npm:2.1.4"],
             ["webpack", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:5.73.0"],
             ["webpack-cli", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:4.10.0"],
-            ["webpack-dev-server", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:4.9.3"]
+            ["webpack-dev-server", "virtual:71e3ec1a560bffc80e9f17c388efac7fe768afecc435b22c7ed3503dea344bb75858d82e3e6732c55e4c005f92c0bf1cad72017d78082c213ca0f35fba4828f1#npm:4.9.3"],
+            ["webpack-merge", "npm:5.8.0"]
           ],
           "linkType": "SOFT",
         }]
