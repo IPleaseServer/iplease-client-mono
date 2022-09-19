@@ -15,7 +15,7 @@ import { colors } from '@common/styles';
 
 export interface InputProps {
   className?: string;
-  type?: 'text' | 'number' | 'file' | 'password' | 'hidden';
+  type?: 'text' | 'number' | 'file' | 'password' | 'hidden' | 'date';
   name?: string;
   placeholder?: string;
   prefix?: string;
@@ -109,6 +109,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           }
           &[type='password'] {
             letter-spacing: 0.25rem;
+            &::placeholder {
+              letter-spacing: initial;
+            }
           }
           transition: 200ms color;
         }

@@ -8,6 +8,9 @@
     },
     {
       "path": "packages/iplease-client-teacher"
+    },
+    {
+      "path": "packages/iplease-client-student"
     }
   ],
   "settings": {
